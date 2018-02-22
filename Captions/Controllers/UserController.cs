@@ -31,5 +31,17 @@ namespace Captions.Controllers
             }
             return RedirectToAction("Index", "Home");
         }
+
+        /// <summary>
+        /// Log user out
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        public ActionResult Logout()
+        {
+            Session.Clear();
+            Session.Abandon();
+            return RedirectToAction("Index", "Home");
+        }
     }
 }

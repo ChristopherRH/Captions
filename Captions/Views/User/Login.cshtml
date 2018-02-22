@@ -1,16 +1,7 @@
-﻿@{
-    ViewBag.Title = "Login";
+﻿@Styles.Render("~/Content/login")
+@using (Html.BeginForm("Login", "User", FormMethod.Post))
+{
+    <input type="text" class="username" name="username" placeholder="Username">
+    <input type="password" class="password" name="password" placeholder="Password">
+    <button class="btn btn-success" type="submit">Login</button>
 }
-
-<h2>Login Page</h2>
-<div>
-    @using (Html.BeginForm("Login", "User", FormMethod.Post))
-    {
-        <span>Username</span>
-        <input type="text" name="username" />
-        <span>Password</span>
-        <input type="password" name="password" />
-        <br />
-        <input type="submit" value="Login" />
-    }
-</div>

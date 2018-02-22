@@ -1,0 +1,22 @@
+﻿form {
+    padding: 20px 0;
+    position: relative;
+    z-index: 2;
+}
+
+form input {
+    outline: 0;
+    border: 1px solid #53e3a6;
+    background-color: #53e3a6 !important;
+    width: 250px;
+    border-radius: 3px;
+    padding: 10px 15px;
+    margin: 0 auto 10px auto;
+    display: block;
+    text-align: center;
+    font-size: 18px;
+    color: white;
+    -webkit-transition-duration: 0.25s;
+    transition-duration: 0.25s;
+    font-weight: 300;
+}

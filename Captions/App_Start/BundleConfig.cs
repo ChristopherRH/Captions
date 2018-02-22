@@ -33,6 +33,10 @@ namespace Captions
             bundles.Add(new StyleBundle("~/Content/dropzonescss").Include(
                      "~/Scripts/Dropzone/css/basic.css",
                      "~/Scripts/Dropzone/css/dropzone.css"));
+
+            // Login
+            bundles.Add(new StyleBundle("~/Content/login").Include(
+                      "~/Content/login.css"));
         }
     }
 }

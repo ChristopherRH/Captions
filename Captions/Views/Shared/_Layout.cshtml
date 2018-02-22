@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Captions.Service
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -8,31 +10,62 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>
-                        @Html.ActionLink("Admin", "Index", "Admin")
-                    </li>
-                    <li>
-                        @Html.ActionLink("Login", "Login", "User")
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="container body-content">
+    <div class="container body-content col-lg-5 col-lg-offset-2">
         @RenderBody()
         <hr />
+    </div>
+    <!-- TODO: Cards-->
+    <!-- Search -->
+    <div class="container col-lg-3 col-lg-offset-2">
+        <div class="jumbotron">
+            <p>Search</p>
+            <input />
+        </div>
+
+        <!-- Home -->
+        <div class="jumbotron">
+            @Html.ActionLink("Home", "Index", "Home")
+        </div>
+
+        <!-- Captions -->
+        <div class="jumbotron">
+            @Html.ActionLink("Captions", "Index", "Caption")
+        </div>
+
+        <!-- Posts -->
+        <div class="jumbotron">
+            @Html.ActionLink("Posts", "Index", "Post")
+        </div>
+
+        <!-- Login -->
+        @if (SecurityService.GetLoggedInUser() == null)
+        {
+        <div class="jumbotron">
+            <a href="#" data-toggle="modal" data-target="#login-modal">Login</a>
+            <div class="modal fade" id="login-modal" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            @Html.Partial("~/Views/User/Login.cshtml")
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        }
+        else {
+        <!-- Logged in -->
+        <div class="jumbotron">
+            @Html.ActionLink("Logout", "Logout", "User")
+        </div>
+        }
+        <!-- Admin -->
+        @if (SecurityService.HasAdminAccess())
+        {
+        <div class="jumbotron">
+            @Html.ActionLink("Admin", "Index", "Admin")
+        </div>
+        }
     </div>
 
     @Scripts.Render("~/bundles/jquery")

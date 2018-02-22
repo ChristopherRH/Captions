@@ -1,5 +1,6 @@
 ﻿using Captions.DataMap;
 using Captions.Models;
+using Captions.Service;
 using System.Web.Mvc;
 using static Captions.Models.User;
 
@@ -17,11 +18,10 @@ namespace Captions.Attributes
         {
             if (filterContext.HttpContext.Session != null)
             {
-                var userId = filterContext.HttpContext.Session[nameof(User)];
-                var user = new DataContext().Users.Find(userId);
+                var user = SecurityService.GetLoggedInUser();
                 if (user != null && user.Role >= userRole)
                 {
-
+                    // do nothing for now
                 }                    
                 else
                 {
