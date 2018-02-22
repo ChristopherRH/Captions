@@ -1,6 +1,4 @@
-﻿
-
-using Captions.Attributes;
+﻿using Captions.Attributes;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 /// <summary>
@@ -15,10 +13,17 @@ namespace Captions.Models
 
         }
 
+        public enum UserRoles
+        {
+            Member,
+            Admin,
+            Super
+        }
+
         [StringLength(25)]
         [Index(IsUnique = true)]
         public string Name { get; set; }
-        public string Role { get; set; }
+        public UserRoles Role { get; set; }
 
         [Hash]
         public string Password { get; set; }

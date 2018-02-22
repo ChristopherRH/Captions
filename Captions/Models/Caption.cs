@@ -1,5 +1,4 @@
-﻿
-namespace Captions.Models
+﻿namespace Captions.Models
 {
     public class Caption : BaseModel
     {

@@ -14,6 +14,7 @@ namespace Captions.DataMap
 
         public DbSet<User> Users { get; set; }
         public DbSet<Caption> Captions { get; set; }
+        public DbSet<ApplicationValue> ApplicationValues { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -26,12 +27,8 @@ namespace Captions.DataMap
         /// <returns></returns>
         public override int SaveChanges()
         {
-            var changes = ChangeTracker.Entries().Where(x => x.State != EntityState.Unchanged);
-
-            foreach(var x in changes)
-            {
-                DataContextService.ComputeHashes(x.Entity);
-            }
+            
+            DataContextService.PerformPreSaveChanges(ChangeTracker);
             return base.SaveChanges();
         }
     }
