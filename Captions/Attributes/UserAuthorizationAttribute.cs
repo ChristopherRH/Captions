@@ -1,6 +1,4 @@
-﻿using Captions.DataMap;
-using Captions.Models;
-using Captions.Service;
+﻿using Captions.Service;
 using System.Web.Mvc;
 using static Captions.Models.User;
 

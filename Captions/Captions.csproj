@@ -182,6 +182,21 @@
     <Content Include="Content\Dropzone\basic.css" />
     <Content Include="Content\Dropzone\dropzone.css" />
     <Content Include="Content\login.css" />
+    <Content Include="Content\Nanogallery\css\font\nano_icon_font3.svg" />
+    <Content Include="Content\Nanogallery\css\loading.gif" />
+    <Content Include="Content\Nanogallery\css\nanogallery.min.css" />
+    <Content Include="Content\Nanogallery\css\nanogallery.woff.min.css" />
+    <Content Include="Content\Nanogallery\css\nano_logo.png" />
+    <Content Include="Content\Nanogallery\css\themes\clean\font\nano_icon_font3.svg" />
+    <Content Include="Content\Nanogallery\css\themes\clean\loading.gif" />
+    <Content Include="Content\Nanogallery\css\themes\clean\nanogallery_clean.min.css" />
+    <Content Include="Content\Nanogallery\css\themes\clean\nanogallery_clean.woff.min.css" />
+    <Content Include="Content\Nanogallery\css\themes\clean\nano_logo.png" />
+    <Content Include="Content\Nanogallery\css\themes\light\font\nano_icon_font3.svg" />
+    <Content Include="Content\Nanogallery\css\themes\light\loading.gif" />
+    <Content Include="Content\Nanogallery\css\themes\light\nanogallery_light.min.css" />
+    <Content Include="Content\Nanogallery\css\themes\light\nanogallery_light.woff.min.css" />
+    <Content Include="Content\Nanogallery\css\themes\light\nano_logo.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -191,6 +206,15 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\Nanogallery\css\font\nano_icon_font3.eot" />
+    <Content Include="Content\Nanogallery\css\font\nano_icon_font3.ttf" />
+    <Content Include="Content\Nanogallery\css\font\nano_icon_font3.woff" />
+    <Content Include="Content\Nanogallery\css\themes\clean\font\nano_icon_font3.eot" />
+    <Content Include="Content\Nanogallery\css\themes\clean\font\nano_icon_font3.ttf" />
+    <Content Include="Content\Nanogallery\css\themes\clean\font\nano_icon_font3.woff" />
+    <Content Include="Content\Nanogallery\css\themes\light\font\nano_icon_font3.eot" />
+    <Content Include="Content\Nanogallery\css\themes\light\font\nano_icon_font3.ttf" />
+    <Content Include="Content\Nanogallery\css\themes\light\font\nano_icon_font3.woff" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Dropzone\dropzone.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -201,6 +225,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\Nanogallery\jquery.nanogallery.min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Web.config" />

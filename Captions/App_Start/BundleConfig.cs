@@ -31,12 +31,19 @@ namespace Captions
             bundles.Add(new ScriptBundle("~/bundles/dropzonescripts").Include(
                      "~/Scripts/Dropzone/dropzone.js"));
             bundles.Add(new StyleBundle("~/Content/dropzonescss").Include(
-                     "~/Scripts/Dropzone/css/basic.css",
-                     "~/Scripts/Dropzone/css/dropzone.css"));
+                     "~/Content/Dropzone/basic.css",
+                     "~/Content/Dropzone/dropzone.css"));
 
             // Login
             bundles.Add(new StyleBundle("~/Content/login").Include(
                       "~/Content/login.css"));
+
+            // Nanogallery
+            bundles.Add(new ScriptBundle("~/bundles/nanogallery").Include(
+                     "~/Scripts/Nanogallery/jquery.nanogallery.min.js"));
+            bundles.Add(new StyleBundle("~/Content/nanogallery").Include(
+                    "~/Content/Nanogallery/css/nanogallery.min.css"));
+
         }
     }
 }

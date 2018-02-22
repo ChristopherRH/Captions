@@ -8,11 +8,11 @@
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
 </head>
 <body>
     <div class="container body-content col-lg-5 col-lg-offset-2">
         @RenderBody()
-        <hr />
     </div>
     <!-- TODO: Cards-->
     <!-- Search -->
@@ -68,7 +68,6 @@
         }
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>
