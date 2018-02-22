@@ -1,16 +1,13 @@
 ﻿using Captions.Attributes;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-/// <summary>
-/// Initil user class for testing, will be removed when creating user login later
-/// </summary>
+
 namespace Captions.Models
 {
     public class User : BaseModel
     {
         public User()
         {
-
         }
 
         public enum UserRoles

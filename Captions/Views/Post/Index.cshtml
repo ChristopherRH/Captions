@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "Posts Page";
+}
+@using Captions.Models
+@model IEnumerable<Post>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@foreach (var item in Model)
+{
+    <h2>@item.PostTitle</h2>
+    <p>@item.PostContent</p>
+    <p>@item.PostedBy</p>
+    <p>@item.CreatedDate</p>
+}

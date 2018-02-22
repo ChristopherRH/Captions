@@ -1,7 +1,4 @@
-﻿using Captions.Models;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 
 namespace Captions.DataMap
 {
@@ -20,7 +17,11 @@ namespace Captions.DataMap
             var users = new UserLoader().LoadUsers();
             users.ForEach(s => context.Users.Add(s));
             context.SaveChanges();
-            
+
+            // posts
+            var posts = new PostLoader().LoadPosts();
+            posts.ForEach(s => context.Posts.Add(s));
+            context.SaveChanges();
         }
     }
 }

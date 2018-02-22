@@ -14,6 +14,7 @@ namespace Captions.DataMap
 
         public DbSet<User> Users { get; set; }
         public DbSet<Caption> Captions { get; set; }
+        public DbSet<Post> Posts { get; set; }
         public DbSet<ApplicationValue> ApplicationValues { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
