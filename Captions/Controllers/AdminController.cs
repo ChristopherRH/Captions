@@ -1,5 +1,6 @@
 ﻿using Captions.Models;
 using Captions.Service;
+using System;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -33,28 +34,55 @@ namespace Captions.Controllers
 
 
         [HttpPost]
-        public ActionResult Index(HttpPostedFileBase postedFile)
+        public ActionResult UploadFiles()
         {
-            if (postedFile != null)
+            var isSavedSuccessfully = true;
+            string fName = "";
+            try
             {
-                BinaryReader b = new BinaryReader(postedFile.InputStream);
-                byte[] binData = b.ReadBytes(postedFile.ContentLength);
-
-                var caption = new Caption
+                foreach (string fileName in Request.Files)
                 {
-                    Title = postedFile.FileName,
-                    ContentType = postedFile.ContentType,
-                    Data = binData
-                };
+                    HttpPostedFileBase file = Request.Files[fileName];
+                    //Save file content goes here
+                    // TODO: Probably want to move this into image service
+                    fName = file.FileName;
+                    if (file != null && file.ContentLength > 0)
+                    {
+                        var b = new BinaryReader(file.InputStream);
+                        var binData = b.ReadBytes(file.ContentLength);
 
-                db.Captions.Add(caption);
-                db.SaveChanges();
-                ViewBag.Message = "File uploaded successfully.";
+                        var caption = new Caption
+                        {
+                            Title = file.FileName,
+                            ContentType = file.ContentType,
+                            Data = binData
+                        };
+
+                        db.Captions.Add(caption);
+                        db.SaveChanges();
+
+                    }
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                isSavedSuccessfully = false;
             }
 
-            return View();
+
+            // since we are responding to a jquery trigger this content t
+            if (isSavedSuccessfully)
+            {
+                return PartialView("Index");
+            }
+            else
+            {
+                return PartialView("Index");
+            }
         }
-       
+
         /// <summary>
         /// Log user in
         /// </summary>
