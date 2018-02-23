@@ -40,31 +40,32 @@
         <!-- Login -->
         @if (SecurityService.GetLoggedInUser() == null)
         {
-        <div class="jumbotron">
-            <a href="#" data-toggle="modal" data-target="#login-modal">Login</a>
-            <div class="modal fade" id="login-modal" tabindex="-1" role="dialog">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-body">
-                            @Html.Partial("~/Views/User/Login.cshtml")
+            <div class="jumbotron">
+                <a href="#" data-toggle="modal" data-target="#login-modal">Login</a>
+                <div class="modal fade" id="login-modal" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                @Html.Partial("~/Views/User/Login.cshtml")
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
         }
-        else {
+        else
+        {
         <!-- Logged in -->
-        <div class="jumbotron">
-            @Html.ActionLink("Logout", "Logout", "User")
-        </div>
+            <div class="jumbotron">
+                @Html.ActionLink("Logout", "Logout", "User")
+            </div>
         }
         <!-- Admin -->
         @if (SecurityService.HasAdminAccess())
         {
-        <div class="jumbotron">
-            @Html.ActionLink("Admin", "Index", "Admin")
-        </div>
+            <div class="jumbotron">
+                @Html.ActionLink("Admin", "Index", "Admin")
+            </div>
         }
     </div>
 

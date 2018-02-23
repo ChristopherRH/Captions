@@ -1,7 +1,7 @@
 ﻿using Captions.Models;
 using System.Collections.Generic;
 
-namespace Captions.DataMap
+namespace Captions.DataMap.DataLoader
 {
     public class PostLoader
     {

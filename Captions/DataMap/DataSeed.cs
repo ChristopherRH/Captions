@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using Captions.DataMap.DataLoader;
+using System.Data.Entity;
 
 namespace Captions.DataMap
 {

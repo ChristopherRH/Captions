@@ -2,6 +2,9 @@
 using System;
 using System.Linq;
 using System.Web.Mvc;
+using Captions.Models;
+using System.Collections.Generic;
+using static Captions.Service.DataContextService;
 
 namespace Captions.Controllers
 {
@@ -9,8 +12,8 @@ namespace Captions.Controllers
     {
         public ActionResult Index()
         {
-            return View(db.Captions.ToList());
-        }
+            return View(ApplyEntitySorting(db.Captions.ToList(), sortOrder: SortOrder.Descening));
+        }       
 
         /// <summary>
         /// For this Caption, get the image and return it

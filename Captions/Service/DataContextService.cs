@@ -5,11 +5,19 @@ using System;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Data.Entity;
+using System.Collections;
+using Captions.Models;
+using System.Collections.Generic;
 
 namespace Captions.Service
 {
     public class DataContextService
     {
+        public enum SortOrder
+        {
+            Ascending,
+            Descening
+        }
 
         /// <summary>
         /// All models should expected to go through this pre saves
@@ -22,6 +30,21 @@ namespace Captions.Service
             {
                 ComputeHashes(change.Entity);
             }
+        }
+
+        /// <summary>
+        /// Apply
+        /// </summary>
+        /// <param name="propertyName"></param>
+        /// <param name="sortOrder"></param>
+        public static IEnumerable<T> ApplyEntitySorting<T>(ICollection<T> entities, string propertyName = null, SortOrder sortOrder = SortOrder.Ascending) where T : BaseModel
+        {
+            if (sortOrder == SortOrder.Ascending)
+            {
+                return entities.OrderBy(x => x.CreatedDate);
+            }
+            return entities.OrderByDescending(x => x.CreatedDate);
+
         }
 
         /// <summary>

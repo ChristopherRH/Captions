@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Captions.DataMap
+namespace Captions.DataMap.DataLoader
 {
     public class UserLoader
     {

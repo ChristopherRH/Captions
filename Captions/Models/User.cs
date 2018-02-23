@@ -19,11 +19,15 @@ namespace Captions.Models
 
         [StringLength(25)]
         [Index(IsUnique = true)]
-        public string Name { get; set; }
-        public UserRoles Role { get; set; }
+        [Required]
+        public virtual string Name { get; set; }
+
+        [Required]
+        public virtual UserRoles Role { get; set; }
 
         [Hash]
-        public string Password { get; set; }
+        [Required]
+        public virtual string Password { get; set; }
 
     }
 }

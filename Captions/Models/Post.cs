@@ -1,6 +1,5 @@
-﻿using Captions.Attributes;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Captions.Models
 {
@@ -11,10 +10,17 @@ namespace Captions.Models
         }
         
         [StringLength(150)]
-        public string PostTitle { get; set; }
+        [Required]
+        public virtual string PostTitle { get; set; }
 
         [StringLength(5000)]
-        public string PostContent { get; set; }
-        public string PostedBy { get; set; }
-    }
+        [Required]
+        public virtual string PostContent { get; set; }
+
+        [Required]
+        public virtual string PostedBy { get; set; }
+
+        // The captions that this post has
+        public virtual ICollection<Caption> Captions { get; set; }
+    } 
 }

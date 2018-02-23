@@ -14,4 +14,9 @@
     <p>@item.PostContent</p>
     <p>@item.PostedBy</p>
     <p>@item.CreatedDate</p>
+    <h4>Captions:</h4>
+    foreach(var caption in item.Captions)
+    {
+        <p>@caption.Title</p>
+    }
 }

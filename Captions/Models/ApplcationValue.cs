@@ -1,4 +1,5 @@
-﻿/// <summary>
+﻿using System.ComponentModel.DataAnnotations;
+/// <summary>
 /// Application values
 /// </summary>
 namespace Captions.Models
@@ -13,6 +14,7 @@ namespace Captions.Models
         /// <summary>
         /// name of the application value
         /// </summary>
+        [Required]
         public virtual string Name { get; set; }
 
         /// <summary>
