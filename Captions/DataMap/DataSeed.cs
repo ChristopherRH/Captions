@@ -1,5 +1,7 @@
 ﻿using Captions.DataMap.DataLoader;
+using System;
 using System.Data.Entity;
+using System.Linq;
 
 namespace Captions.DataMap
 {
@@ -19,10 +21,23 @@ namespace Captions.DataMap
             users.ForEach(s => context.Users.Add(s));
             context.SaveChanges();
 
+            // captions
+            var captions = new CaptionLoader().LoadCaptions();
+            captions.ForEach(s => context.Captions.Add(s));
+            context.SaveChanges();
+
             // posts
             var posts = new PostLoader().LoadPosts();
+
+            // assign captions to each post
+            foreach (var post in posts)
+            {
+                var postCaptions = context.Captions.Take(new Random().Next(0, 10)).ToList();
+                post.Captions = postCaptions;
+            }
             posts.ForEach(s => context.Posts.Add(s));
             context.SaveChanges();
+
         }
     }
 }

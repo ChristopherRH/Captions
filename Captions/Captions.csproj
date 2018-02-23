@@ -157,6 +157,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="DataMap\DataContext.cs" />
+    <Compile Include="DataMap\DataLoader\CaptionLoader.cs" />
     <Compile Include="DataMap\DataSeed.cs" />
     <Compile Include="DataMap\DataLoader\ApplicationValueLoader.cs" />
     <Compile Include="DataMap\DataLoader\PostLoader.cs" />
