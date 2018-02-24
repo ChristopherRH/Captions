@@ -44,6 +44,10 @@ namespace Captions
             bundles.Add(new StyleBundle("~/Content/nanogallery").Include(
                     "~/Content/Nanogallery/css/nanogallery.min.css"));
 
+            //SweetAlert2
+            bundles.Add(new ScriptBundle("~/bundles/swal").Include(
+                     "~/Scripts/SweetAlert2/SweetAlert2.js"));
+
         }
     }
 }

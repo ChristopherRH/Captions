@@ -3,10 +3,7 @@
     Form should be bigger, needs some proper styling
     if there's an error in upload, should handle it by alerting the error?
 
-    Maximum request length caps the requests at about 7 files
-
-    Need to reload the page to upload more...not sure why
-
+    TODO: Reloading page on successfull upload, but should probably just replace the content.
     Here for some examples:
     https://qawithexperts.com/article/asp.net/file-uploading-using-dropzone-js-html5-in-mvc/81
 
@@ -47,18 +44,14 @@
         $(document).ready(function () {
             Dropzone.autoDiscover = false;
             $('#myDropzone').dropzone({
-                //parameter name value
                 paramName: "files",
-                //clickable div id
                 clickable: '#previews',
-                //preview files container Id
                 previewsContainer: "#previewFiles",
                 autoProcessQueue: false,
                 uploadMultiple: true,
                 parallelUploads: 100,
                 maxFiles: 100,
-                //  url:"/", // url here to save file
-                maxFilesize: 100,//max file size in MB,
+                maxFilesize: 100, //max file size in MB,
                 addRemoveLinks: true,
                 dictResponseError: 'Server not Configured',
                 acceptedFiles: ".png,.jpg,.gif,.bmp,.jpeg",// use this to restrict file type
@@ -67,6 +60,7 @@
                     // config
                     self.options.addRemoveLinks = true;
                     self.options.dictRemoveFile = "Delete";
+
                     //New file added
                     self.on("addedfile", function (file) {
                         console.log('new file added ', file);
@@ -75,23 +69,16 @@
                     });
                     // Send file starts
                     self.on("sending", function (file) {
-                        console.log('upload started', file);
                         $('.meter').show();
                     });
 
                     // File upload Progress
                     self.on("totaluploadprogress", function (progress) {
-                        console.log("progress ", progress);
                         $('.roller').width(progress + '%');
                     });
 
                     self.on("queuecomplete", function (progress) {
                         $('.meter').delay(999).slideUp(999);
-                    });
-
-                    // On removing file
-                    self.on("removedfile", function (file) {
-                        console.log(file);
                     });
 
                     $('#Submit').on("click", function (e) {
@@ -109,18 +96,20 @@
                         }
 
                     });
-                    
+
                     self.on("successmultiple", function (files, response) {
                         // Gets triggered when the files have successfully been sent.
                         // Redirect user or notify of success.
                         // response should be the HTML of the page to render
-                        $(".body-content").html(response);
-
+                        //
+                        swal("Files Uploaded", "Upload Complete", "success").then(function (result) {
+                            if (result) {
+                                location.reload(true);
+                            }
+                        });
                     });
                 }
             });
-
-
         })
 
     </script>
