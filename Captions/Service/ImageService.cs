@@ -14,7 +14,7 @@ namespace Captions.Service
         /// <returns></returns>
         public static FileContentResult GetImage(Caption caption)
         {
-            return caption.Data != null ? new FileContentResult(caption.Data, "image/jpeg") : null;
+            return caption.Data != null ? new FileContentResult(caption.Data, caption.ContentType) : null;
         }
 
         /// <summary>
