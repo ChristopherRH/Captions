@@ -24,7 +24,8 @@ namespace Captions.DataMap.DataLoader
         {
             var captions = new List<Caption>();
             //todo: Don't hardcode this...
-            var path = @"C:\Users\Chris\Desktop\Captions\Captions\Captions\Images";
+            var desktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            var path = desktop + @"\Anime";
             var exists = Directory.Exists(path);
             if (exists)
             {
