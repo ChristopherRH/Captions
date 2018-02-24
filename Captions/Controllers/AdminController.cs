@@ -18,6 +18,15 @@ namespace Captions.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Create Caption View
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult CreateCaption()
+        {
+            return PartialView();
+        }
+
         [HttpPost]
         public ActionResult UploadFiles()
         {

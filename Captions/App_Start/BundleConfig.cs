@@ -31,6 +31,8 @@ namespace Captions
             // Dropzone
             bundles.Add(new ScriptBundle("~/bundles/dropzonescripts").Include(
                      "~/Scripts/Dropzone/dropzone.js"));
+            bundles.Add(new ScriptBundle("~/bundles/dropzoneconfig").Include(
+                     "~/Scripts/dropzone-configuration.js"));
             bundles.Add(new StyleBundle("~/Content/dropzonescss").Include(
                      "~/Content/Dropzone/basic.css",
                      "~/Content/Dropzone/dropzone.css"));

@@ -3,5 +3,5 @@
 {
     @Html.Bootstrap().Input(name: "username", inputType: FormInputType.Text).SetPlaceholder("Username")
     @Html.Bootstrap().Input(name: "password", inputType: FormInputType.Password).SetPlaceholder("Password")
-    @Html.Bootstrap().Button(buttonType: ButtonType.Submit, text: "Login")
+    @Html.Bootstrap().Button(buttonType: ButtonType.Submit, text: "Login").AddCss( "btn-success" )
 }
