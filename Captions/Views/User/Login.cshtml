@@ -1,7 +1,7 @@
 ﻿@Styles.Render("~/Content/login")
 @using (Html.BeginForm("Login", "User", FormMethod.Post))
 {
-    <input type="text" class="username" name="username" placeholder="Username">
-    <input type="password" class="password" name="password" placeholder="Password">
-    <button class="btn btn-success" type="submit">Login</button>
+    @Html.Bootstrap().Input(name: "username", inputType: FormInputType.Text).SetPlaceholder("Username")
+    @Html.Bootstrap().Input(name: "password", inputType: FormInputType.Password).SetPlaceholder("Password")
+    @Html.Bootstrap().Button(buttonType: ButtonType.Submit, text: "Login")
 }
