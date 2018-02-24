@@ -172,6 +172,7 @@
     <Compile Include="Models\Post.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RenderUtilities\ViewRender.cs" />
     <Compile Include="Service\ApplicationService.cs" />
     <Compile Include="Service\DataContextService.cs" />
     <Compile Include="Service\ImageService.cs" />
@@ -203,8 +204,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -218,6 +217,8 @@
     <Content Include="Content\Nanogallery\css\themes\light\font\nano_icon_font3.ttf" />
     <Content Include="Content\Nanogallery\css\themes\light\font\nano_icon_font3.woff" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\Dropzone\dropzone.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

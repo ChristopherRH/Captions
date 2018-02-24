@@ -10,7 +10,6 @@ namespace Captions.Controllers
     {
         public ActionResult Index()
         {
-            return View();
             return View(ApplyEntitySorting(db.Captions.ToList(), sortOrder: SortOrder.Descening));
         }
 

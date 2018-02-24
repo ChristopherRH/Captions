@@ -10,3 +10,7 @@
 
 
 <h1>This is the home page</h1>
+@foreach(var item in Model)
+{
+    <p>@item.Title</p>
+}

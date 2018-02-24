@@ -22,3 +22,13 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.affix {
+    top: 50px;
+    right: 0;
+    position: fixed;
+}
+
+.modal-backdrop {
+    z-index: -1;
+}
