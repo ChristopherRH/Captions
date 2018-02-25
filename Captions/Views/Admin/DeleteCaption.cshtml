@@ -1,0 +1,21 @@
+﻿
+@model IEnumerable<Caption>
+
+<h2>Caption Delete</h2>
+@using (Html.BeginForm("DeleteCaption", "Admin", FormMethod.Post))
+{
+    <div>
+        <select name="Id">
+            @foreach (var item in Model)
+            {
+
+                <option value="@item.ID">@item.Title</option>
+            }
+        </select>
+
+        @Html.Bootstrap().Button(buttonType: ButtonType.Submit, text: "Delete").AddCss("btn-danger")
+
+
+
+    </div>
+}

@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Web.Mvc;
 
 namespace Captions.Models
 {
@@ -14,5 +16,6 @@ namespace Captions.Models
 
         // The Posts that this caption is on
         public virtual ICollection<Post> Posts { get; set; }
+
     }
 }

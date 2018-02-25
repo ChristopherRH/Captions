@@ -11,6 +11,7 @@
 
 @Styles.Render("~/Content/dropzonescss")
 
+
 <h2>Caption Upload</h2>
 @using (Html.BeginForm("UploadFiles", "Admin", FormMethod.Post, new { @name = "myDropzone", id = "myDropzone", @enctype = "multipart/form-data" }))
 {
@@ -27,4 +28,9 @@
         @Html.Bootstrap().Div().SetId("previewFiles")
         
     </div>
+}
+
+@section scripts{
+    @Scripts.Render("~/bundles/dropzonescripts")
+    @Scripts.Render("~/bundles/dropzoneconfig")
 }

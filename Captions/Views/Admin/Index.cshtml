@@ -1,6 +1,14 @@
-﻿@Html.Partial("CreateCaption")
+﻿<div class="jumbotron">
+    @Html.ActionLink("Upload Captions", "CreateCaption")
+    
+</div>
 
-@section scripts{
-    @Scripts.Render("~/bundles/dropzonescripts")
-    @Scripts.Render("~/bundles/dropzoneconfig")
-}
+<div class="card text-center">
+    <div class="card-header">
+        Delete
+    </div>
+    <div class="card-body">
+        @Html.ActionLink("Delete Captions", "DeleteCaption")
+    </div>
+</div>
+
