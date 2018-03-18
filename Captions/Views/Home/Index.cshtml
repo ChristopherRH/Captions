@@ -1,4 +1,7 @@
-﻿@{
+﻿@using Captions.RenderUtilities;
+@using Captions.RenderUtilities.RenderObjects
+
+@{
     ViewBag.Title = "Home Page";
 }
 
@@ -10,7 +13,9 @@
 
 
 <h1>This is the home page</h1>
-@foreach(var item in Model)
+@Html.Swal2(new Swal2
 {
-    <p>@item.Title</p>
-}
+    Title = "test",
+    TitleText = "Test Title",
+    ReverseButtons = false
+})

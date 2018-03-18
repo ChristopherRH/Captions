@@ -7,7 +7,16 @@ namespace Captions.DataMap
 {
     // todo: Don't want to drop and create always, just drop and rebuild every table with seed data
     // probably only the tables that have model changes
-    public class DataSeed : DropCreateDatabaseAlways<DataContext>
+    public class DataSeed :
+        
+        // if not exists
+        CreateDatabaseIfNotExists<DataContext>
+
+        // drop create always
+        //DropCreateDatabaseAlways<DataContext>
+        
+        // model change
+        //DropCreateDatabaseIfModelChanges<DataContext>
     {
         protected override void Seed(DataContext context)
         {
