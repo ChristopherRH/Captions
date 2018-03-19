@@ -27,6 +27,7 @@ namespace Captions.Controllers
         /// Create view
         /// </summary>
         /// <returns></returns>
+        [UserAuthorization(UserRoles.Admin)]
         public ActionResult Create()
         {
             return View();

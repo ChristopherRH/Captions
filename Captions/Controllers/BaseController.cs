@@ -1,4 +1,6 @@
 ﻿using Captions.DataMap;
+using System.Collections.Specialized;
+using System.Web;
 using System.Web.Mvc;
 
 namespace Captions.Controllers
@@ -7,5 +9,30 @@ namespace Captions.Controllers
     {
         public DataContext db = new DataContext();
 
+        protected override void OnException(ExceptionContext filterContext)
+        {
+            if (filterContext.ExceptionHandled)
+            {
+                return;
+            }
+
+            // return to home page with not authorized result in url
+            var uri = new RedirectResult("/Home/Index?NotAuthorized=1");
+            filterContext.Result = uri;
+            filterContext.ExceptionHandled = true;
+        }
+
+
+        protected override void OnActionExecuting(ActionExecutingContext filterContext)
+        {
+            base.OnActionExecuting(filterContext);
+
+            var notAuthorized = Request.QueryString.Get("NotAuthorized");
+            if (!string.IsNullOrEmpty(notAuthorized))
+            {
+                ViewData.Add("error", "Not Authorized");
+            }
+
+        }
     }
 }

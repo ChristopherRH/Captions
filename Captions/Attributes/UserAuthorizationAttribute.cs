@@ -1,4 +1,5 @@
 ﻿using Captions.Service;
+using System;
 using System.Web.Mvc;
 using static Captions.Models.User;
 
@@ -24,7 +25,8 @@ namespace Captions.Attributes
                 else
                 {
                     // todo return an error for not authorized
-                    filterContext.Result = new RedirectResult("/Home/Index");
+                    //filterContext.Result = new RedirectResult("/Home/Index");
+                    throw new UnauthorizedAccessException();
                 }
             }
         }
