@@ -16,6 +16,13 @@ namespace Captions.RenderUtilities
     {
         /// <summary>
         /// Renders a simple sweet alert
+        /// Example:
+        /// @Html.Swal2(new Swal2
+        /// {
+        ///     Title = "test",
+        ///     TitleText = "Test Title",
+        ///     ReverseButtons = false
+        /// })
         /// </summary>
         /// <param name="target"></param>
         /// <param name="text"></param>

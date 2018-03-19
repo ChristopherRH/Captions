@@ -1,21 +1,10 @@
-﻿@using Captions.RenderUtilities;
-@using Captions.RenderUtilities.RenderObjects
-
-@{
+﻿@{
     ViewBag.Title = "Home Page";
 }
 
 @model IEnumerable<Caption>
-
 @{
     ViewBag.Title = "Index";
 }
 
-
 <h1>This is the home page</h1>
-@Html.Swal2(new Swal2
-{
-    Title = "test",
-    TitleText = "Test Title",
-    ReverseButtons = false
-})

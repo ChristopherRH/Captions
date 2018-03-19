@@ -178,7 +178,9 @@
     <Compile Include="Models\Post.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RenderUtilities\RenderObjects\Select2.cs" />
     <Compile Include="RenderUtilities\RenderObjects\Swal2.cs" />
+    <Compile Include="RenderUtilities\Select2Render.cs" />
     <Compile Include="RenderUtilities\SwalRender.cs" />
     <Compile Include="RenderUtilities\ViewRender.cs" />
     <Compile Include="Service\ApplicationService.cs" />
@@ -208,6 +210,7 @@
     <Content Include="Content\Nanogallery\css\themes\light\nanogallery_light.min.css" />
     <Content Include="Content\Nanogallery\css\themes\light\nanogallery_light.woff.min.css" />
     <Content Include="Content\Nanogallery\css\themes\light\nano_logo.png" />
+    <Content Include="Content\Select2\Select2.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -246,6 +249,7 @@
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\Select2\Select2.js" />
     <Content Include="Scripts\SweetAlert2\SweetAlert2.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
