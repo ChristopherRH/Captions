@@ -1,4 +1,5 @@
 ﻿using Captions.DataMap;
+using System;
 using System.Collections.Specialized;
 using System.Web;
 using System.Web.Mvc;
@@ -17,9 +18,12 @@ namespace Captions.Controllers
             }
 
             // return to home page with not authorized result in url
-            var uri = new RedirectResult("/Home/Index?NotAuthorized=1");
-            filterContext.Result = uri;
-            filterContext.ExceptionHandled = true;
+            if (filterContext.Exception is UnauthorizedAccessException)
+            {
+                var uri = new RedirectResult("/Home/Index?NotAuthorized=1");
+                filterContext.Result = uri;
+                filterContext.ExceptionHandled = true;
+            }
         }
 
 
