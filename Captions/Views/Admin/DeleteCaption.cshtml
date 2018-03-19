@@ -1,9 +1,9 @@
 ﻿
 @model CaptionListViewModel
 
-<h2>Caption Delete</h2>
-@using (Html.BeginForm("DeleteCaption", "Admin", FormMethod.Post))
+@using (Html.BeginForm("DeleteCaption", "Admin", FormMethod.Post, new { id = "delete-caption-form" }))
 {
-    @Html.Select2(Model.Captions, new Select2 { }, textProp: nameof(Caption.Title))
-    @Html.Bootstrap().Button(buttonType: ButtonType.Submit, text: "Delete").AddCss("btn-danger")
+    @Html.Select2(Model.Captions, new Select2 { width = "60%" }, textProp: nameof(Caption.Title))
+    <br />
+    @Html.Bootstrap().Button(buttonType: ButtonType.Button, text: "Delete").AddCss("btn-danger").AddAttributes(new { onclick = "DeleteCaption();" })
 }

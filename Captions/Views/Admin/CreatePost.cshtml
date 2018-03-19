@@ -1,7 +1,6 @@
-﻿@using Captions.Controllers;
-@model IEnumerable<Post>
+﻿@model CaptionListViewModel
 
-@using (Html.BeginForm("CreatePost", "Post", FormMethod.Post, new { @name = "newPost", id = "newPost" }))
+@using (Html.BeginForm("CreatePost", "Post", FormMethod.Post, new {id = "create-post-form" }))
 {
     @Html.Label("Title")
     @Html.Bootstrap().Input(name: "title", inputType: FormInputType.Text)
@@ -11,7 +10,7 @@
 
     @Html.Label("Add Captions")
     <br />
-    @Html.Select2(((PostController)this.ViewContext.Controller).GetCaptions(), new Select2
+    @Html.Select2(Model.Captions, new Select2
         {
             width = "60%",
             allowClear = true,
@@ -19,5 +18,5 @@
             selectOnClose = false
         }, textProp: nameof(Caption.Title))
     <br /><br />
-    @Html.Bootstrap().Button(buttonType: ButtonType.Submit, text: "Create").AddCss("btn-success")
+    @Html.Bootstrap().Button(buttonType: ButtonType.Button, text: "Create").AddCss("btn-success").AddAttributes(new { onclick = "CreatePost();" })
 }

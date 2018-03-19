@@ -192,6 +192,9 @@
     <Compile Include="Service\ImageService.cs" />
     <Compile Include="Service\LoginService.cs" />
     <Compile Include="Service\SecurityService.cs" />
+    <Compile Include="Viewmodels\AdminViewModel.cs" />
+    <Compile Include="Viewmodels\PostViewModel.cs" />
+    <Compile Include="Viewmodels\PostListViewModel.cs" />
     <Compile Include="Viewmodels\CaptionListViewModel.cs" />
     <Compile Include="Viewmodels\CaptionViewModel.cs" />
     <Compile Include="Viewmodels\ViewModel.cs" />
@@ -277,7 +280,7 @@
     <Content Include="Views\Caption\Index.cshtml" />
     <Content Include="Views\Post\Index.cshtml" />
     <Content Include="Views\User\Logout.cshtml" />
-    <Content Include="Views\Post\Create.cshtml" />
+    <Content Include="Views\Admin\CreatePost.cshtml" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
     <Content Include="Views\Admin\CreateCaption.cshtml" />

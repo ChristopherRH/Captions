@@ -1,84 +1,66 @@
 ﻿using System;
 using System.IO;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using System.Web.UI;
 
 namespace Captions.RenderUtilities
 {
-    public static class ViewRender
+    public static class RenderPartialToStringExtensions
     {
-        public static string RenderViewToString(this Controller controller, string viewName, object model)
+        /// <summary>
+        /// render PartialView and return string
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="partialViewName"></param>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public static string RenderPartialToString(this ControllerContext context, string partialViewName, object model)
         {
-            var context = controller.ControllerContext;
-            if (string.IsNullOrEmpty(viewName))
-                viewName = context.RouteData.GetRequiredString("action");
+            return RenderPartialToStringMethod(context, partialViewName, model);
+        }
 
-            var viewData = new ViewDataDictionary(model);
+        /// <summary>
+        /// render PartialView and return string
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="partialViewName"></param>
+        /// <param name="viewData"></param>
+        /// <param name="tempData"></param>
+        /// <returns></returns>
+        public static string RenderPartialToString(ControllerContext context, string partialViewName, ViewDataDictionary viewData, TempDataDictionary tempData)
+        {
+            return RenderPartialToStringMethod(context, partialViewName, viewData, tempData);
+        }
 
-            using (var sw = new StringWriter())
+        public static string RenderPartialToStringMethod(ControllerContext context, string partialViewName, ViewDataDictionary viewData, TempDataDictionary tempData)
+        {
+            ViewEngineResult result = ViewEngines.Engines.FindPartialView(context, partialViewName);
+
+            if (result.View != null)
             {
-                var viewResult = ViewEngines.Engines.FindPartialView(context, viewName);
-                var viewContext = new ViewContext(context, viewResult.View, viewData, new TempDataDictionary(), sw);
-                viewResult.View.Render(viewContext, sw);
+                StringBuilder sb = new StringBuilder();
+                using (StringWriter sw = new StringWriter(sb))
+                {
+                    using (HtmlTextWriter output = new HtmlTextWriter(sw))
+                    {
+                        ViewContext viewContext = new ViewContext(context, result.View, viewData, tempData, output);
+                        result.View.Render(viewContext, output);
+                    }
+                }
 
-                return sw.GetStringBuilder().ToString();
+                return sb.ToString();
             }
+            return String.Empty;
         }
 
-        public static string RenderViewToString(ControllerContext context, string viewPath, object model = null, bool partial = false)
+        public static string RenderPartialToStringMethod(ControllerContext context, string partialViewName, object model)
         {
-            // first find the ViewEngine for this view
-            ViewEngineResult viewEngineResult = null;
-            if (partial)
-                viewEngineResult = ViewEngines.Engines.FindPartialView(context, viewPath);
-            else
-                viewEngineResult = ViewEngines.Engines.FindView(context, viewPath, null);
-
-            if (viewEngineResult == null)
-                throw new FileNotFoundException("View cannot be found.");
-
-            // get the view and attach the model to view data
-            var view = viewEngineResult.View;
-            context.Controller.ViewData.Model = model;
-
-            string result = null;
-
-            using (var sw = new StringWriter())
-            {
-                var ctx = new ViewContext(context, view, context.Controller.ViewData, context.Controller.TempData, sw);
-                view.Render(ctx, sw);
-                result = sw.ToString();
-            }
-
-            return result;
+            ViewDataDictionary viewData = new ViewDataDictionary(model);
+            TempDataDictionary tempData = new TempDataDictionary();
+            return RenderPartialToStringMethod(context, partialViewName, viewData, tempData);
         }
-
-        public static T CreateController<T>(RouteData routeData = null) where T : Controller, new()
-        {
-            // create a disconnected controller instance
-            T controller = new T();
-
-            // get context wrapper from HttpContext if available
-            HttpContextBase wrapper;
-            if (HttpContext.Current != null)
-                wrapper = new HttpContextWrapper(System.Web.HttpContext.Current);
-            else
-                throw new InvalidOperationException(
-                    "Can't create Controller Context if no " +
-                    "active HttpContext instance is available.");
-
-            if (routeData == null)
-                routeData = new RouteData();
-
-            // add the controller routing if not existing
-            if (!routeData.Values.ContainsKey("controller") &&
-                !routeData.Values.ContainsKey("Controller"))
-                routeData.Values.Add("controller", controller.GetType().Name.ToLower().Replace("controller", ""));
-
-            controller.ControllerContext = new ControllerContext(wrapper, routeData, controller);
-            return controller;
-        }
-
     }
 }

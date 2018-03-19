@@ -27,7 +27,7 @@ namespace Captions.RenderUtilities
         public static IHtmlString Select2(this HtmlHelper htmlHelper, IEnumerable list, Select2 select2, string valProp = "ID", string textProp = "ID")
         {
             var urlHelper = new UrlHelper(htmlHelper.ViewContext.RequestContext);
-            var selector = list.GetType().GUID.ToString();
+            var selector = Guid.NewGuid().ToString();
 
             var select2Options = BuildSelect2Options(list, valProp, textProp);
             var select = new TagBuilder("select")

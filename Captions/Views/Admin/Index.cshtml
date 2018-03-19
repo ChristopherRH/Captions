@@ -1,4 +1,6 @@
-﻿<div class="jumbotron">
+﻿@model AdminViewModel
+
+<div class="jumbotron">
     @Html.ActionLink("Upload Captions", "CreateCaption")
     
 </div>
@@ -7,8 +9,8 @@
     <div class="card-header">
         Create Post
     </div>
-    <div class="card-body">
-        @Html.ActionLink("Create Post", "Create", "Post")
+    <div class="card-body" id="create-post-card">
+        @Html.Partial("CreatePost", Model.Captions)
     </div>
 </div>
 
@@ -16,8 +18,8 @@
     <div class="card-header">
         Delete Captions
     </div>
-    <div class="card-body">
-        @Html.ActionLink("Delete Captions", "DeleteCaption")
+    <div class="card-body" id="delete-caption-card">
+        @Html.Partial("DeleteCaption", Model.Captions)
     </div>
 </div>
 
@@ -25,7 +27,55 @@
     <div class="card-header">
         Delete Posts
     </div>
-    <div class="card-body">
-        @Html.ActionLink("Delete Posts", "DeletePost")
+    <div class="card-body" id="delete-post-card">
+        @Html.Partial("DeletePost", Model.Posts)
     </div>
 </div>
+
+
+<script>
+    function DeleteCaption() {
+        $.ajax({
+            url: "Admin/DeleteCaption",
+            data: $("#delete-caption-form").serialize(),
+            method: "POST"
+        }).done(function (result) {
+            if (result.Success) {
+                $("#delete-caption-card").html(result.Data);
+            }
+            else {
+                swal("Error", "Item could not be deleted");
+            }
+        });
+    };        
+
+    function DeletePost() {
+        $.ajax({
+            url: "Admin/DeletePost",
+            data: $("#delete-post-form").serialize(),
+            method: "POST"
+        }).done(function (result) {
+            if (result.Success) {
+                $("#delete-post-card").html(result.Data);
+            }
+            else {
+                swal("Error", "Item could not be deleted");
+            }
+        });
+    };        
+
+    function CreatePost() {
+        $.ajax({
+            url: "Admin/CreatePost",
+            data: $("#create-post-form").serialize(),
+            method: "POST"
+        }).done(function (result) {
+            if (result.Success) {
+                $("#create-post-card").html(result.Data);
+            }
+            else {
+                swal("Error", "Item could not be created");
+            }
+        });
+    };        
+</script>

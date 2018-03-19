@@ -1,16 +1,17 @@
 ﻿
-@model IEnumerable<Post>
-
-<h2>Post Delete</h2>
-@if (Model.Any())
-{
-    using (Html.BeginForm("DeletePost", "Admin", FormMethod.Post))
+@model PostListViewModel
+<div id="delete-posts">
+    @if (Model.Posts.Any())
     {
-        @Html.Select2(Model, new Select2 { }, textProp: nameof(Post.PostTitle))
-        @Html.Bootstrap().Button(buttonType: ButtonType.Submit, text: "Delete").AddCss("btn-danger")
+        using (Html.BeginForm("DeletePost", "Admin", FormMethod.Post, new { id = "delete-post-form" }))
+        {
+            @Html.Select2(Model.Posts, new Select2 { width = "60%" }, textProp: nameof(Post.PostTitle))
+            <br />
+            @Html.Bootstrap().Button(buttonType: ButtonType.Button, text: "Delete").AddCss("btn-danger").AddAttributes(new { onclick = "DeletePost();" })
+        }
     }
-}
-else
-{
-    <p>No Results Found</p>
-}
+    else
+    {
+        <p>No Results Found</p>
+    }
+</div>
