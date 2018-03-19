@@ -36,7 +36,7 @@ namespace Captions.RenderUtilities
             };
 
             select.Attributes.Add("id", selector);
-            select.Attributes.Add("name", "Id");
+            select.Attributes.Add("name", "id");
 
 
             // build the select2 script

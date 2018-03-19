@@ -60,12 +60,18 @@ namespace Captions.RenderUtilities.RenderObjects
         [Render]
         public string width { get; set; } = "resolve";
 
+        /// <summary>
+        /// To be used with tags to specify the seperators in the tags
+        /// </summary>
+        [Render]
+        public string tokenSeparators { get; set; }
+
         #endregion
 
         #region Not Implemented
 
         public string tokenizer { get; set; }
-        public string tokenSeparators { get; set; }
+        
 
         #endregion
     }

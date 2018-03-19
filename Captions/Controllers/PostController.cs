@@ -7,6 +7,7 @@ using static Captions.Models.User;
 using static Captions.Service.DataContextService;
 using System;
 using System.Collections.Generic;
+using WebGrease.Css.Extensions;
 
 namespace Captions.Controllers
 {
@@ -39,17 +40,17 @@ namespace Captions.Controllers
         /// <returns></returns>
         [HttpPost]
         [UserAuthorization(UserRoles.Admin)]
-        public ActionResult CreatePost(string title, string content)
+        public ActionResult CreatePost(string title, string content, Guid[] id)
         {
             var post = new Post
             {
                 PostTitle = title,
                 PostContent = content,
-                PostedBy = SecurityService.GetLoggedInUser().Name
+                PostedBy = SecurityService.GetLoggedInUser().Name,
+                Captions = new List<Caption>()
             };
 
-            //TODO: For now just add a random list of captions to the post
-            post.Captions = GenerateRandomCaptions();
+            id.ForEach(x => post.Captions.Add(db.Captions.Find(x)));
 
             db.Posts.Add(post);
             db.SaveChanges();
@@ -59,13 +60,12 @@ namespace Captions.Controllers
         }
 
         /// <summary>
-        /// Gets a random list of captions, temporary.
+        /// Gets all captions
         /// </summary>
         /// <returns></returns>
-        private ICollection<Caption> GenerateRandomCaptions()
+        public ICollection<Caption> GetCaptions()
         {
-            var captions = db.Captions;
-            return captions.OrderBy(arg => Guid.NewGuid()).Take(5).ToList();
+            return ApplyEntitySorting(db.Captions.ToList()).ToList();
         }
     }
 }

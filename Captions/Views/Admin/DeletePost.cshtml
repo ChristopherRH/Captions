@@ -1,0 +1,16 @@
+﻿
+@model IEnumerable<Post>
+
+<h2>Post Delete</h2>
+@if (Model.Any())
+{
+    using (Html.BeginForm("DeletePost", "Admin", FormMethod.Post))
+    {
+        @Html.Select2(Model, new Select2 { }, textProp: nameof(Post.PostTitle))
+        @Html.Bootstrap().Button(buttonType: ButtonType.Submit, text: "Delete").AddCss("btn-danger")
+    }
+}
+else
+{
+    <p>No Results Found</p>
+}

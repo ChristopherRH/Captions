@@ -29,13 +29,23 @@ namespace Captions.Controllers
         }
 
         /// <summary>
-        /// Create Caption View
+        /// Delete Caption View
         /// </summary>
         /// <returns></returns>
         public ActionResult DeleteCaption()
         {
 
             return View(DataContextService.ApplyEntitySorting(db.Captions.ToList()));
+        }
+
+        /// <summary>
+        /// Delete Post View
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult DeletePost()
+        {
+
+            return View(DataContextService.ApplyEntitySorting(db.Posts.ToList()));
         }
 
 
@@ -81,7 +91,22 @@ namespace Captions.Controllers
             return View("Index");
         }
 
-
-
+        /// <summary>
+        /// Deletes from the DB
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public ActionResult DeletePost(Guid Id)
+        {
+            var post = db.Posts.Find(Id);
+            if (post != null)
+            {
+                db.Posts.Remove(post);
+                db.SaveChanges();
+            }
+            // return success
+            return View("Index");
+        }
     }
 }

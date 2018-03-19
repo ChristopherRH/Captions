@@ -1,4 +1,6 @@
-﻿@{
+﻿@using Captions.Controllers;
+
+@{
     ViewBag.Title = "Posts Page";
 }
 
@@ -10,7 +12,19 @@
 
 @using (Html.BeginForm("CreatePost", "Post", FormMethod.Post, new { @name = "newPost", id = "newPost" }))
 {
+    @Html.Label("Title")
     @Html.Bootstrap().Input(name: "title", inputType: FormInputType.Text)
+
+    @Html.Label("Content")
     @Html.Bootstrap().TextArea(name: "content")
-    @Html.Bootstrap().Button(buttonType: ButtonType.Submit, text: "Create")
+
+    @Html.Label("Add Captions")
+    <br />
+    @Html.Select2(((PostController)this.ViewContext.Controller).GetCaptions(), new Select2 {
+                        width ="60%",
+                        allowClear = true,
+                        multiple = true
+                    }, textProp: nameof(Caption.Title))
+    <br /><br />
+    @Html.Bootstrap().Button(buttonType: ButtonType.Submit, text: "Create").AddCss("btn-success")
 }
