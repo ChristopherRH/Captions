@@ -1,9 +1,9 @@
 ﻿
-@model IEnumerable<Caption>
+@model CaptionListViewModel
 
 <h2>Caption Delete</h2>
 @using (Html.BeginForm("DeleteCaption", "Admin", FormMethod.Post))
 {
-    @Html.Select2(Model, new Select2 { }, textProp: nameof(Caption.Title))
+    @Html.Select2(Model.Captions, new Select2 { }, textProp: nameof(Caption.Title))
     @Html.Bootstrap().Button(buttonType: ButtonType.Submit, text: "Delete").AddCss("btn-danger")
 }

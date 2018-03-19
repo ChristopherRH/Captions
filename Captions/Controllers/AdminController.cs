@@ -1,8 +1,11 @@
 ﻿using Captions.Attributes;
 using Captions.Service;
+using Captions.Viewmodels;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using WebGrease.Css.Extensions;
 using static Captions.Models.User;
 
 namespace Captions.Controllers
@@ -34,8 +37,14 @@ namespace Captions.Controllers
         /// <returns></returns>
         public ActionResult DeleteCaption()
         {
+            var list = new List<CaptionViewModel>();
+            DataContextService.ApplyEntitySorting(db.Captions.ToList()).ForEach(c => list.Add(new CaptionViewModel(c)));
 
-            return View(DataContextService.ApplyEntitySorting(db.Captions.ToList()));
+            var vm = new CaptionListViewModel
+            {
+                Captions = list
+            };
+            return View(vm);
         }
 
         /// <summary>
