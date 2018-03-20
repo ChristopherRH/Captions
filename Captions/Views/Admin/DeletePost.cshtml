@@ -7,7 +7,10 @@
         {
             @Html.Select2(Model.Posts, new Select2 { width = "60%" }, textProp: nameof(Post.PostTitle))
             <br />
-            @Html.Bootstrap().Button(buttonType: ButtonType.Button, text: "Delete").AddCss("btn-danger").AddAttributes(new { onclick = "DeletePost();" })
+            @Html.Bootstrap().Button(buttonType: ButtonType.Button, text: "Delete").AddCss("btn-danger").AddAttributes(new
+            {
+                onclick = $"ajaxSubmit('" + Url.Action("DeletePost") + "', '#delete-post-form', 'POST', '#delete-post-card');"
+            })
         }
     }
     else

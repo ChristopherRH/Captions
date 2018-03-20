@@ -21,8 +21,7 @@ namespace Captions.Controllers
         /// <returns></returns>
         public ActionResult Index()
         {
-            var vm = new AdminViewModel(db.Captions.ToList(), db.Posts.ToList());
-            return View(vm);
+            return View();
         }
 
         /// <summary>
@@ -40,7 +39,14 @@ namespace Captions.Controllers
         /// <returns></returns>
         public ActionResult CreatePost()
         {
-            return View();
+            var list = new List<CaptionViewModel>();
+            DataContextService.ApplyEntitySorting(db.Captions.ToList()).ForEach(c => list.Add(new CaptionViewModel(c)));
+
+            var vm = new CaptionListViewModel
+            {
+                Captions = list
+            };
+            return PartialView("CreatePost", vm);
         }
 
         /// <summary>
@@ -56,7 +62,7 @@ namespace Captions.Controllers
             {
                 Captions = list
             };
-            return View(vm);
+            return PartialView("DeleteCaption", vm);
         }
 
         /// <summary>
@@ -72,10 +78,11 @@ namespace Captions.Controllers
             {
                 Posts = list
             };
-            return View(vm);
+            return PartialView("DeletePost", vm);
         }
 
-
+        #region HTTP Methods
+        
         [HttpPost]
         public ActionResult UploadFiles()
         {
@@ -212,5 +219,7 @@ namespace Captions.Controllers
 
 
         }
+
+        #endregion
     }
 }

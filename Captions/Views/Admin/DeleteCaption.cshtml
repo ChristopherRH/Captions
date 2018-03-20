@@ -5,5 +5,8 @@
 {
     @Html.Select2(Model.Captions, new Select2 { width = "60%" }, textProp: nameof(Caption.Title))
     <br />
-    @Html.Bootstrap().Button(buttonType: ButtonType.Button, text: "Delete").AddCss("btn-danger").AddAttributes(new { onclick = "DeleteCaption();" })
+    @Html.Bootstrap().Button(buttonType: ButtonType.Button, text: "Delete").AddCss("btn-danger").AddAttributes(new
+    {
+        onclick = $"ajaxSubmit('" + Url.Action("DeleteCaption") + "', '#delete-caption-form', 'POST', '#delete-caption-card');"
+    })
 }

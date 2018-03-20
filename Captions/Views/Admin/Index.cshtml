@@ -1,6 +1,4 @@
-﻿@model AdminViewModel
-
-<div class="jumbotron">
+﻿<div class="jumbotron">
     @Html.ActionLink("Upload Captions", "CreateCaption")
     
 </div>
@@ -10,7 +8,7 @@
         Create Post
     </div>
     <div class="card-body" id="create-post-card">
-        @Html.Partial("CreatePost", Model.Captions)
+        @Html.Action("CreatePost")
     </div>
 </div>
 
@@ -19,7 +17,7 @@
         Delete Captions
     </div>
     <div class="card-body" id="delete-caption-card">
-        @Html.Partial("DeleteCaption", Model.Captions)
+        @Html.Action("DeleteCaption")
     </div>
 </div>
 
@@ -28,54 +26,6 @@
         Delete Posts
     </div>
     <div class="card-body" id="delete-post-card">
-        @Html.Partial("DeletePost", Model.Posts)
+        @Html.Action("DeletePost")
     </div>
 </div>
-
-
-<script>
-    function DeleteCaption() {
-        $.ajax({
-            url: "Admin/DeleteCaption",
-            data: $("#delete-caption-form").serialize(),
-            method: "POST"
-        }).done(function (result) {
-            if (result.Success) {
-                $("#delete-caption-card").html(result.Data);
-            }
-            else {
-                swal("Error", "Item could not be deleted");
-            }
-        });
-    };        
-
-    function DeletePost() {
-        $.ajax({
-            url: "Admin/DeletePost",
-            data: $("#delete-post-form").serialize(),
-            method: "POST"
-        }).done(function (result) {
-            if (result.Success) {
-                $("#delete-post-card").html(result.Data);
-            }
-            else {
-                swal("Error", "Item could not be deleted");
-            }
-        });
-    };        
-
-    function CreatePost() {
-        $.ajax({
-            url: "Admin/CreatePost",
-            data: $("#create-post-form").serialize(),
-            method: "POST"
-        }).done(function (result) {
-            if (result.Success) {
-                $("#create-post-card").html(result.Data);
-            }
-            else {
-                swal("Error", "Item could not be created");
-            }
-        });
-    };        
-</script>

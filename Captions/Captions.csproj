@@ -192,7 +192,6 @@
     <Compile Include="Service\ImageService.cs" />
     <Compile Include="Service\LoginService.cs" />
     <Compile Include="Service\SecurityService.cs" />
-    <Compile Include="Viewmodels\AdminViewModel.cs" />
     <Compile Include="Viewmodels\PostViewModel.cs" />
     <Compile Include="Viewmodels\PostListViewModel.cs" />
     <Compile Include="Viewmodels\CaptionListViewModel.cs" />
@@ -239,6 +238,7 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\Caption.js" />
     <Content Include="Scripts\dropzone-configuration.js" />
     <Content Include="Scripts\Dropzone\dropzone.js" />
     <None Include="Scripts\jquery-2.1.3.intellisense.js" />

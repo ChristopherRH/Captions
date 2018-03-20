@@ -11,12 +11,15 @@
     @Html.Label("Add Captions")
     <br />
     @Html.Select2(Model.Captions, new Select2
-        {
-            width = "60%",
-            allowClear = true,
-            multiple = true,
-            selectOnClose = false
-        }, textProp: nameof(Caption.Title))
+    {
+        width = "60%",
+        allowClear = true,
+        multiple = true,
+        selectOnClose = false
+    }, textProp: nameof(Caption.Title))
     <br /><br />
-    @Html.Bootstrap().Button(buttonType: ButtonType.Button, text: "Create").AddCss("btn-success").AddAttributes(new { onclick = "CreatePost();" })
+    @Html.Bootstrap().Button(buttonType: ButtonType.Button, text: "Create").AddCss("btn-success").AddAttributes(new
+    {
+        onclick = $"ajaxSubmit('"+ Url.Action("CreatePost") +"', '#create-post-form', 'POST', '#create-post-card');"
+    })
 }
