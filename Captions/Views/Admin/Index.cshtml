@@ -1,6 +1,13 @@
-﻿<div class="jumbotron">
-    @Html.ActionLink("Upload Captions", "CreateCaption")
-    
+﻿@Styles.Render("~/Content/dropzonescss")
+
+
+<div class="card text-center">
+    <div class="card-header">
+        Upload Images
+    </div>
+    <div class="card-body" id="upload-caption-card">
+        @Html.Action("UploadCaption")
+    </div>
 </div>
 
 <div class="card text-center">
@@ -29,3 +36,9 @@
         @Html.Action("DeletePost")
     </div>
 </div>
+
+
+@section scripts{
+    @Scripts.Render("~/bundles/dropzonescripts")
+    @Scripts.Render("~/bundles/dropzoneconfig")
+}

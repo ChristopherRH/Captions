@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
     Dropzone.autoDiscover = false;
-    $('#myDropzone').dropzone({
+    $('#dropzone').dropzone({
         paramName: "files",
         clickable: '#previews',
         previewsContainer: "#previewFiles",
@@ -45,11 +45,9 @@
 
                 if (self.getQueuedFiles().length > 0) {
                     self.processQueue();
-
-
                 } else {
                     self.uploadFiles([]);
-                    $('#myDropzone').submit();
+                    $('#dropzone').submit();
                 }
 
             });
@@ -60,9 +58,7 @@
                 // response should be the HTML of the page to render
                 //
                 swal("Files Uploaded", "Upload Complete", "success").then(function (result) {
-                    if (result) {
-                        location.reload(true);
-                    }
+                    location.reload(true);
                 });
             });
         }

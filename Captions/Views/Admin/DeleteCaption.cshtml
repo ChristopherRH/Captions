@@ -1,12 +1,18 @@
 ﻿
 @model CaptionListViewModel
 
-@using (Html.BeginForm("DeleteCaption", "Admin", FormMethod.Post, new { id = "delete-caption-form" }))
+@if (Model.Captions.Any())
 {
-    @Html.Select2(Model.Captions, new Select2 { width = "60%" }, textProp: nameof(Caption.Title))
-    <br />
-    @Html.Bootstrap().Button(buttonType: ButtonType.Button, text: "Delete").AddCss("btn-danger").AddAttributes(new
+    using (Html.BeginForm("DeleteCaption", "Admin", FormMethod.Post, new { id = "delete-caption-form" }))
     {
-        onclick = $"ajaxSubmit('" + Url.Action("DeleteCaption") + "', '#delete-caption-form', 'POST', '#delete-caption-card');"
-    })
+        @Html.Select2(Model.Captions, new Select2 { width = "60%" }, textProp: nameof(Caption.Title))
+        <br />
+        @Html.Bootstrap().Button(buttonType: ButtonType.Button, text: "Delete").AddCss("btn-danger").AddAttributes(new
+        {
+            onclick = $"ajaxSubmit('" + Url.Action("DeleteCaption") + "', '#delete-caption-form', 'POST', '#delete-caption-card');"
+        })
+    }
+}
+else{
+<p>No Results Found</p>
 }

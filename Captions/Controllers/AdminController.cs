@@ -28,9 +28,9 @@ namespace Captions.Controllers
         /// Create Caption View
         /// </summary>
         /// <returns></returns>
-        public ActionResult CreateCaption()
+        public ActionResult UploadCaption()
         {
-            return View();
+            return PartialView("UploadCaption");
         }
 
         /// <summary>
@@ -84,8 +84,9 @@ namespace Captions.Controllers
         #region HTTP Methods
         
         [HttpPost]
-        public ActionResult UploadFiles()
+        public JsonResult UploadFiles()
         {
+            var success = true;
             try
             {
                 foreach (var fileName in Request.Files)
@@ -98,13 +99,18 @@ namespace Captions.Controllers
             }
             catch (Exception ex)
             {
-                Console.Write(ex);
-                // todo: return an error in some way
-                return PartialView("Index");
+                success = false;
             }
 
             // return success
-            return PartialView("Index");
+            var str = RenderPartialToStringExtensions.RenderPartialToString(ControllerContext, "UploadCaption", null);
+            var result = new
+            {
+                Success = success,
+                Data = str
+            };
+
+            return Json(result);
         }
 
         /// <summary>

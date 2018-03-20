@@ -9,11 +9,7 @@
 
 *@
 
-@Styles.Render("~/Content/dropzonescss")
-
-
-<h2>Caption Upload</h2>
-@using (Html.BeginForm("UploadFiles", "Admin", FormMethod.Post, new { @name = "myDropzone", id = "myDropzone", @enctype = "multipart/form-data" }))
+@using (Html.BeginForm("UploadFiles", "Admin", FormMethod.Post, new { @name = "dropzone", id = "dropzone", @enctype = "multipart/form-data" }))
 {
     <div>
         <div id="previews" class="dz-default dz-message box__input dropzone">
@@ -26,11 +22,6 @@
             @Html.Bootstrap().Button(buttonType: ButtonType.Submit, text: "Upload").AddCss("btn-success").SetId("Submit")
         </div>
         @Html.Bootstrap().Div().SetId("previewFiles")
-        
     </div>
 }
 
-@section scripts{
-    @Scripts.Render("~/bundles/dropzonescripts")
-    @Scripts.Render("~/bundles/dropzoneconfig")
-}
