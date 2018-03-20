@@ -17,10 +17,11 @@
                 @Html.Bootstrap().Span(text: "Drop files  to attach or browse")
             </div>
         </div>
-
+        <br />
         <div>
             @Html.Bootstrap().Button(buttonType: ButtonType.Submit, text: "Upload").AddCss("btn-success").SetId("Submit")
         </div>
+        <br />
         @Html.Bootstrap().Div().SetId("previewFiles")
     </div>
 }

@@ -6,7 +6,7 @@
         using (Html.BeginForm("DeletePost", "Admin", FormMethod.Post, new { id = "delete-post-form" }))
         {
             @Html.Select2(Model.Posts, new Select2 { width = "60%" }, textProp: nameof(Post.PostTitle))
-            <br />
+            <br /><br />
             @Html.Bootstrap().Button(buttonType: ButtonType.Button, text: "Delete").AddCss("btn-danger").AddAttributes(new
             {
                 onclick = $"ajaxSubmit('" + Url.Action("DeletePost") + "', '#delete-post-form', 'POST', '#delete-post-card');"
