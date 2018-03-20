@@ -1,25 +1,27 @@
 ﻿@model CaptionListViewModel
 
-@using (Html.BeginForm("CreatePost", "Post", FormMethod.Post, new {id = "create-post-form" }))
+@using (Html.BeginForm("CreatePost", "Post", FormMethod.Post, new { id = "create-post-form" }))
 {
-    @Html.Label("Title")
-    @Html.Bootstrap().Input(name: "title", inputType: FormInputType.Text)
+    <div class="w-75 p-2 container">
+        @Html.Label("Title")
+        @Html.Bootstrap().Input(name: "title", inputType: FormInputType.Text)
 
-    @Html.Label("Content")
-    @Html.Bootstrap().TextArea(name: "content")
+        @Html.Label("Content")
+        @Html.Bootstrap().TextArea(name: "content")
 
-    @Html.Label("Add Captions")
-    <br />
-    @Html.Select2(Model.Captions, new Select2
-    {
-        width = "60%",
-        allowClear = true,
-        multiple = true,
-        selectOnClose = false
-    }, textProp: nameof(Caption.Title))
-    <br /><br />
-    @Html.Bootstrap().Button(buttonType: ButtonType.Button, text: "Create").AddCss("btn-success").AddAttributes(new
-    {
-        onclick = $"ajaxSubmit('"+ Url.Action("CreatePost") +"', '#create-post-form', 'POST', '#create-post-card');"
-    })
+        @Html.Label("Add Captions")
+        <br />
+        @Html.Select2(Model.Captions, new Select2
+        {
+            width = "100%",
+            allowClear = true,
+            multiple = true,
+            selectOnClose = false
+        }, textProp: nameof(Caption.Title))
+                <br /><br />
+                @Html.Bootstrap().Button(buttonType: ButtonType.Button, text: "Create").AddCss("btn-success").AddAttributes(new
+        {
+            onclick = $"ajaxSubmit('" + Url.Action("CreatePost") + "', '#create-post-form', 'POST', '#create-post-card');"
+        })
+    </div>
 }
