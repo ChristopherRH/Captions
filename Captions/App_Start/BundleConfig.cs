@@ -41,11 +41,11 @@ namespace Captions
             bundles.Add(new StyleBundle("~/Content/login").Include(
                       "~/Content/login.css"));
 
-            // Nanogallery
+            // Nanogallery2
             bundles.Add(new ScriptBundle("~/bundles/nanogallery").Include(
-                     "~/Scripts/Nanogallery/jquery.nanogallery.min.js"));
+                     "~/Scripts/Nanogallery2/jquery.nanogallery2.js"));
             bundles.Add(new StyleBundle("~/Content/nanogallery").Include(
-                    "~/Content/Nanogallery/css/nanogallery.min.css"));
+                    "~/Content/Nanogallery2/css/nanogallery2.min.css"));
 
             // SweetAlert2
             bundles.Add(new ScriptBundle("~/bundles/swal").Include(

@@ -2,9 +2,10 @@
 using System;
 using System.Linq;
 using System.Web.Mvc;
-using Captions.Models;
 using System.Collections.Generic;
 using static Captions.Service.DataContextService;
+using Captions.Viewmodels;
+using WebGrease.Css.Extensions;
 
 namespace Captions.Controllers
 {
@@ -12,7 +13,14 @@ namespace Captions.Controllers
     {
         public ActionResult Index()
         {
-            return View(ApplyEntitySorting(db.Captions.ToList(), sortOrder: SortOrder.Descening));
+            var list = new List<CaptionViewModel>();
+            ApplyEntitySorting(db.Captions.ToList(), sortOrder: SortOrder.Descening).ForEach(c => list.Add(new CaptionViewModel(c)));
+
+            var vm = new CaptionListViewModel
+            {
+                Captions = list
+            };
+            return View(vm);
         }       
 
         /// <summary>

@@ -1,22 +1,36 @@
-﻿@{
-    ViewBag.Title = "Posts Page";
-}
-@using Captions.Models
-@model IEnumerable<Post>
+﻿@* THIS SHOULD BE SHARED CODE WTIH THE CAPTIONS PAGE
+   TODO: Build a render utility for this
+*@
 
-@{
-    ViewBag.Title = "Index";
-}
+@model PostListViewModel
 
-@foreach (var item in Model)
+@foreach (var post in Model.Posts)
 {
-    <h2>@item.PostTitle</h2>
-    <p>@item.PostContent</p>
-    <p>@item.PostedBy</p>
-    <p>@item.CreatedDate</p>
-    <h4>Captions:</h4>
-    foreach(var caption in item.Captions)
-    {
-        <p>@caption.Title</p>
-    }
+    <div>
+        <p class="small font-weight-bold">@post.CreatedDate</p>
+        <h2>@post.PostTitle</h2>
+        <hr />
+
+        <span>@post.PostContent</span>
+
+        <hr />
+        @if (post.Captions.Captions.Any())
+        {
+        <div id="nanogallery-@post.ID" data-nanogallery2='{ "itemsBaseURL": "@Request.Url.GetLeftPart(UriPartial.Authority)"}'>
+            @foreach (var image in post.Captions.Captions)
+            {
+                <a href="@Url.Action("GetImage", new { id = image.ID })"
+                   data-ngthumb="@Url.Action("GetImage", new { id = image.ID })"
+                   data-ngid="@image.ID"
+                   ></a>
+
+            }
+        </div>            
+        }
+        else {
+            <p class="text-center font-italic small">No Images Available</p>
+        }
+    </div>
+    <br /><br /><br /><br /><br /><hr />
+
 }

@@ -195,12 +195,15 @@ namespace Captions.Controllers
                 Captions = new List<Caption>()
             };
 
-            foreach(var capId in id)
+            if (id != null)
             {
-                var cap = db.Captions.Find(capId);
-                if(cap != null)
+                foreach (var capId in id)
                 {
-                    post.Captions.Add(cap);
+                    var cap = db.Captions.Find(capId);
+                    if (cap != null)
+                    {
+                        post.Captions.Add(cap);
+                    }
                 }
             }
 

@@ -1,13 +1,4 @@
-﻿@{
-    ViewBag.Title = "Home Page";
-}
-
-@model IEnumerable<Caption>
-@{
-    ViewBag.Title = "Index";
-}
-
-<h1>This is the home page</h1>
+﻿<h1>This is the home page</h1>
 @if (ViewData["error"] != null)
 {
     @Html.Swal2(new Swal2 { Title = "Not Authorized", TitleText = "You are not authorized to perform that action." });

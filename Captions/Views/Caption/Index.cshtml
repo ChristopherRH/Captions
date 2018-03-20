@@ -1,39 +1,25 @@
-﻿@* http://nanogallery.brisbois.fr/#docGeneralSettings
-    I want to eventually add tags to captions and create albums that store the captions by their tag.
-    Probably a lot of work
-    *@
+﻿@* THIS SHOULD BE SHARED CODE WTIH THE POST CAPTIONS
+   TODO: Build a render utility for this
+*@
 
-@Styles.Render("~/Content/nanogallery")
+@model CaptionListViewModel
 
-@model IEnumerable<Caption>
-
-@if (Model.Any())
+@if (Model.Captions.Any())
 {
-<div id="nanoGallery" class="col-lg-12">
-    @foreach (var item in Model)
+<div data-nanogallery2 = 
+     '{ "thumbnailWidth": "auto",
+        "thumbnailHeight":  auto,
+        "itemsBaseURL":"@Request.Url.GetLeftPart(UriPartial.Authority)" 
+     }'>
+
+    @foreach (var item in Model.Captions)
     {
-        <a href="@Url.Action("GetImage", new { id = item.ID })" data-ngthumb="@Url.Action("GetImage", new { id = item.ID })" />
+        <a href="@Url.Action("GetImage", new { id = item.ID })" 
+           data-ngthumb="@Url.Action("GetImage" ,new { id = item.ID })"
+        ></a>
     }
 </div>
 }
 else {
     <h1>No Captions Uploaded</h1>
-}
-@section scripts{
-    @Scripts.Render("~/bundles/nanogallery")
-    <script>
-        $(document).ready(function () {
-            var ThumbnailLabel = {
-                display: false,
-                displayDescription: false,
-                hideIcons: false,
-
-            };
-               $("#nanoGallery").nanoGallery({
-                   colorScheme: 'light',
-                   thumbnailLabel: ThumbnailLabel,
-                   itemsBaseURL: '@Request.Url.GetLeftPart(UriPartial.Authority)'
-               });
-           });
-    </script>
 }
