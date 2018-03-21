@@ -3,3 +3,9 @@
 {
     @Html.Swal2(new Swal2 { Title = "Not Authorized", TitleText = "You are not authorized to perform that action." });
 }
+
+
+@model CaptionListViewModel
+@Html.Nanogallery(Model.Captions, new Nanogallery
+{
+})

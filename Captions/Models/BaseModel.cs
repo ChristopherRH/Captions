@@ -27,9 +27,9 @@ namespace Captions.Models
             }
         }
 
-        public Guid ID { get; set; }
-        public string CreatedDate { get; set; }
-        public string ModifiedDate { get; set; }
+        public virtual Guid ID { get; set; }
+        public virtual string CreatedDate { get; set; }
+        public virtual string ModifiedDate { get; set; }
 
         // this entity is new
         [NotMapped]

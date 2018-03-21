@@ -1,25 +1,10 @@
-﻿@* THIS SHOULD BE SHARED CODE WTIH THE POST CAPTIONS
-   TODO: Build a render utility for this
-*@
-
-@model CaptionListViewModel
+﻿@model CaptionListViewModel
 
 @if (Model.Captions.Any())
 {
-<div data-nanogallery2 = 
-     '{ "thumbnailWidth": "auto",
-        "thumbnailHeight":  auto,
-        "itemsBaseURL":"@Request.Url.GetLeftPart(UriPartial.Authority)" 
-     }'>
-
-    @foreach (var item in Model.Captions)
-    {
-        <a href="@Url.Action("GetImage", new { id = item.ID })" 
-           data-ngthumb="@Url.Action("GetImage" ,new { id = item.ID })"
-        ></a>
-    }
-</div>
+    @Html.Nanogallery(Model.Captions)
 }
-else {
+else
+{
     <h1>No Captions Uploaded</h1>
 }

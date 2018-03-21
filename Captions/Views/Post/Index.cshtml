@@ -1,8 +1,4 @@
-﻿@* THIS SHOULD BE SHARED CODE WTIH THE CAPTIONS PAGE
-   TODO: Build a render utility for this
-*@
-
-@model PostListViewModel
+﻿@model PostListViewModel
 
 @foreach (var post in Model.Posts)
 {
@@ -16,18 +12,15 @@
         <hr />
         @if (post.Captions.Captions.Any())
         {
-        <div id="nanogallery-@post.ID" data-nanogallery2='{ "itemsBaseURL": "@Request.Url.GetLeftPart(UriPartial.Authority)"}'>
-            @foreach (var image in post.Captions.Captions)
-            {
-                <a href="@Url.Action("GetImage", new { id = image.ID })"
-                   data-ngthumb="@Url.Action("GetImage", new { id = image.ID })"
-                   data-ngid="@image.ID"
-                   ></a>
-
-            }
-        </div>            
+            @Html.Nanogallery(post.Captions.Captions,
+                new Nanogallery
+                {
+                 
+                },
+                post.ID)
         }
-        else {
+        else
+        {
             <p class="text-center font-italic small">No Images Available</p>
         }
     </div>

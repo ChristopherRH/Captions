@@ -182,6 +182,8 @@
     <Compile Include="Models\Post.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RenderUtilities\NanogalleryRender.cs" />
+    <Compile Include="RenderUtilities\RenderObjects\Nanogallery.cs" />
     <Compile Include="RenderUtilities\RenderObjects\Select2.cs" />
     <Compile Include="RenderUtilities\RenderObjects\Swal2.cs" />
     <Compile Include="RenderUtilities\Select2Render.cs" />
