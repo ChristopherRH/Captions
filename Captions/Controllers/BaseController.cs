@@ -1,4 +1,5 @@
 ﻿using Captions.DataMap;
+using Captions.Service;
 using System;
 using System.Collections.Specialized;
 using System.Web;
@@ -10,6 +11,10 @@ namespace Captions.Controllers
     {
         public DataContext db = new DataContext();
 
+        /// <summary>
+        /// When exception is thrown, check if authorization exception
+        /// </summary>
+        /// <param name="filterContext"></param>
         protected override void OnException(ExceptionContext filterContext)
         {
             if (filterContext.ExceptionHandled)
@@ -26,7 +31,10 @@ namespace Captions.Controllers
             }
         }
 
-
+        /// <summary>
+        /// When an action is executed, this will intercept and check for authorization
+        /// </summary>
+        /// <param name="filterContext"></param>
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             base.OnActionExecuting(filterContext);
@@ -37,6 +45,17 @@ namespace Captions.Controllers
                 ViewData.Add("error", "Not Authorized");
             }
 
+        }
+
+        /// <summary>
+        /// For this Caption, get the image and return it
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public FileContentResult GetImage(Guid id)
+        {
+            var caption = db.Captions.Find(id);
+            return ImageService.GetImage(caption);
         }
     }
 }

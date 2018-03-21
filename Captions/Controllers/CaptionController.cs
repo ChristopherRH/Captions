@@ -21,18 +21,6 @@ namespace Captions.Controllers
                 Captions = list
             };
             return View(vm);
-        }       
-
-        /// <summary>
-        /// For this Caption, get the image and return it
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        public FileContentResult GetImage(Guid id)
-        {
-            var caption = db.Captions.Find(id);
-            return ImageService.GetImage(caption);
         }
-
     }
 }
