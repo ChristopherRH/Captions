@@ -260,3 +260,6 @@ paket-files/
 __pycache__/
 *.pyc
 Captions/Properties/PublishProfiles/Captions20180320102423 - Web Deploy.pubxml
+Captions/Web.config
+Captions/Web.config
+Captions/Web.config

@@ -206,9 +206,9 @@
     <Content Include="Content\Dropzone\basic.css" />
     <Content Include="Content\Dropzone\dropzone.css" />
     <Content Include="Content\login.css" />
-    <Content Include="Content\Nanogallery2\css\nanogallery2.min.css" />
-    <Content Include="Content\Nanogallery2\css\nanogallery2.woff.min.css" />
-    <Content Include="Content\Nanogallery2\css\nanogallery2_logo.png" />
+    <Content Include="Content\Nanogallery2\nanogallery2.min.css" />
+    <Content Include="Content\Nanogallery2\nanogallery2.woff.min.css" />
+    <Content Include="Content\Nanogallery2\nanogallery2_logo.png" />
     <Content Include="Content\Select2\Select2.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -216,9 +216,8 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\Nanogallery2\css\font\.htaccess" />
-    <Content Include="Content\Nanogallery2\css\font\ngy2_icon_font.woff" />
-    <Content Include="Content\Nanogallery2\css\font\ngy2_icon_font.woff2" />
+    <Content Include="Content\font\ngy2_icon_font.woff" />
+    <Content Include="Content\font\ngy2_icon_font.woff2" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />

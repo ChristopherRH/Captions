@@ -26,26 +26,25 @@ namespace Captions
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/Select2/Select2.css",
+                      "~/Content/Nanogallery2/nanogallery2.min.css",
+                      "~/Content/Dropzone/basic.css",
+                      "~/Content/Dropzone/dropzone.css"
+                      ));
+            // Login
+            bundles.Add(new StyleBundle("~/Content/login").Include(
+                      "~/Content/login.css"));
 
             // Dropzone
             bundles.Add(new ScriptBundle("~/bundles/dropzonescripts").Include(
                      "~/Scripts/Dropzone/dropzone.js"));
             bundles.Add(new ScriptBundle("~/bundles/dropzoneconfig").Include(
-                     "~/Scripts/dropzone-configuration.js"));
-            bundles.Add(new StyleBundle("~/Content/dropzonescss").Include(
-                     "~/Content/Dropzone/basic.css",
-                     "~/Content/Dropzone/dropzone.css"));
-
-            // Login
-            bundles.Add(new StyleBundle("~/Content/login").Include(
-                      "~/Content/login.css"));
+                     "~/Scripts/dropzone-configuration.js"));                       
 
             // Nanogallery2
             bundles.Add(new ScriptBundle("~/bundles/nanogallery").Include(
                      "~/Scripts/Nanogallery2/jquery.nanogallery2.js"));
-            bundles.Add(new StyleBundle("~/Content/nanogallery").Include(
-                    "~/Content/Nanogallery2/css/nanogallery2.min.css"));
 
             // SweetAlert2
             bundles.Add(new ScriptBundle("~/bundles/swal").Include(
@@ -54,8 +53,6 @@ namespace Captions
             // Select2
             bundles.Add(new ScriptBundle("~/bundles/select2").Include(
                      "~/Scripts/Select2/Select2.js"));
-            bundles.Add(new StyleBundle("~/Content/select2").Include(
-                    "~/Content/Select2/Select2.css"));
 
             // Caption (personal scripts)
             bundles.Add(new ScriptBundle("~/bundles/caption").Include(
