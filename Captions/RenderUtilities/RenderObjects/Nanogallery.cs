@@ -1,7 +1,9 @@
 ﻿// https://nanogallery2.nanostudio.org/documentation.html
 // Go to Gallery Settings
+// Not everything in here works, it's a surprise...
 
 using Captions.Attributes;
+using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace Captions.RenderUtilities.RenderObjects
@@ -12,7 +14,7 @@ namespace Captions.RenderUtilities.RenderObjects
     public class Nanogallery
     {
         #region thumbnail config
-        
+
         [Render]
         [Description("thumbnailHeight")]
         public string ThumbnailHeight { get; set; }
@@ -38,29 +40,81 @@ namespace Captions.RenderUtilities.RenderObjects
 
         [Render]
         [Description("thumbnailBorderHorizontal")]
-        public string ThumbnailBorderHorizontal { get; set; }
+        public int ThumbnailBorderHorizontal { get; set; }
 
         [Render]
         [Description("thumbnailBorderVertical ")]
-        public string ThumbnailBorderVertical { get; set; }
+        public int ThumbnailBorderVertical { get; set; }
 
         [Render]
         [Description("thumbnailGutterWidth")]
-        public string ThumbnailGutterWidth { get; set; }
+        public int ThumbnailGutterWidth { get; set; }
 
         [Render]
         [Description("thumbnailGutterHeight")]
-        public string ThumbnailGutterHeight { get; set; }
+        public int ThumbnailGutterHeight { get; set; }
 
         // none, slideUp, slideDown, scaleUp, scaleDown, fadeIn, randomScale, flipDown, flipUp, slideDown2, slideUp2, slideRight, slideLeft, custom. 
         [Render]
         [Description("thumbnailDisplayTransition")]
         public string ThumbnailDisplayTransition { get; set; }
 
+        [Render]
+        [Description("thumbnailDisplayTransitionDuration")]
+        public int ThumbnailDisplayTransitionDuration { get; set; }
+
+        [Render]
+        [Description("thumbnailSliderDelay")]
+        public int ThumbnailSliderDelay { get; set; } = 1000;
+
+        [Render]
+        [Description("position")]
+        public string Position { get; set; }
+
+        [Render]
+        [Description("align")]
+        public string Align { get; set; }
+
+        [Render]
+        [Description("display")]
+        public bool Display { get; set; } = true;
+
+        [Render]
+        [Description("displayDescription")]
+        public bool DisplayDescription { get; set; }
+
+        [Render]
+        [Description("hideIcons")]
+        public bool HideIcons { get; set; } = true;
+
+
+        [Render]
+        [Description("displayBreadcrumb")]
+        public bool DisplayBreadcrumb { get; set; }
+        
+        [Render]
+        [Description("breadcrumbOnlyCurrentLevel")]
+        public bool BreadcrumbOnlyCurrentLevel { get; set; }
+        
+        [Render]
+        [Description("breadcrumbAutoHideTopLevel")]
+        public bool BreadcrumbAutoHideTopLevel { get; set; }
+        
+        [Render]
+        [Description("touchAnimation")]
+        public bool TouchAnimation { get; set; } = true;
+
         #endregion
 
 
         #region Gallery Config
+
+        /// <summary>
+        /// thumbnailToolbarAlbum: { topLeft: 'select', topRight : 'counter' }
+        /// </summary>
+        [Render]
+        [Description("thumbnailToolbarAlbum")]
+        public string ThumbnailToolbarAlbum { get; set; } = "{}";
 
         [Render]
         [Description("galleryDisplayMode")]
@@ -130,6 +184,30 @@ namespace Captions.RenderUtilities.RenderObjects
         [Render]
         [Description("galleryDisplayTransitionDuration")]
         public int GalleryDisplayTransitionDuration { get; set; }
+
+        /// <summary>
+        /// "viewerToolbar":   {
+        ///                     "standard":   "minimizeButton, label, shareButton, fullscreenButton",
+        ///                     "minimized":  "minimizeButton, label, fullscreenButton, downloadButton, infoButton"
+        ///                    },
+        ///                    
+        /// This will use special logic in the nanogallery render, none, standard, minimized
+        /// for now, read only default
+        /// </summary>
+        [Render]
+        [Description("viewerToolbar")]
+        public string ViewerToolbar => "default";
+
+        /// <summary>
+        /// "viewerTools":    {
+        ///                     "topLeft":   "label",
+        ///                     "topRight":  "playPauseButton, zoomButton, fullscreenButton, closeButton" 
+        ///                    }
+        /// This will have special logic, but for now read only default
+        /// </summary>
+        [Render]
+        [Description("viewerTools")]
+        public string ViewerTools => "default";
 
         #endregion
 

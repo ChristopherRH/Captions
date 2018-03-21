@@ -14,6 +14,7 @@ namespace Captions.RenderUtilities
 {
     public static class NanogalleryRender
     {
+
         /// <summary>
         /// Render a nanogallery from a list of images
         /// </summary>
@@ -79,7 +80,11 @@ namespace Captions.RenderUtilities
                 var val = prop.GetValue(ng, null);
                 if (prop.GetCustomAttributes(typeof(RenderAttribute), false).Length > 0 && val != null)
                 {
-                    if (val.GetType() == typeof(bool))
+                    if (IsSpecialProperty(prop))
+                    {
+                        body += RenderSpecial(val, prop.Name);
+                    }
+                    else if (val.GetType() == typeof(bool))
                     {
                         // bools are uppercase first late strings, so for JS convert to lower case string
                         body += $"\"{GetDescription(prop)}\": \"{val.ToString().ToLower()}\",";
@@ -114,6 +119,51 @@ namespace Captions.RenderUtilities
         private static string GetDescription(PropertyInfo pi)
         {
             return ((DescriptionAttribute)pi.GetCustomAttributes(typeof(DescriptionAttribute), true)[0])?.Description;
+        }
+
+        /// <summary>
+        /// These are special objects that are rendered differently than standard primitives
+        /// </summary>
+        /// <param name="pi"></param>
+        /// <returns></returns>
+        private static bool IsSpecialProperty(PropertyInfo pi)
+        {
+            // this should be a static list somewhere rather than instantiated here every call.
+            var SpecialNanogalleryProperties = new List<string>
+            {
+                { "ViewerToolbar" },
+                { "ViewerTools" }
+            };
+            return SpecialNanogalleryProperties.Contains(pi.Name);
+        }
+
+        /// <summary>
+        /// Perform special render logic
+        /// this is not maintainable, find a better way to do this later
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="property"></param>
+        /// <returns></returns>
+        private static string RenderSpecial(object value, string property)
+        {
+            if(property == "ViewerToolbar")
+            {
+                if((string)value == "default")
+                {
+                    return "\"viewerToolbar\": { \"standard\": \"downloadButton, fullscreenButton\"},";
+                }
+            }
+
+            if (property == "ViewerTools")
+            {
+                if ((string)value == "default")
+                {
+                    return "\"viewerTools\": { \"topRight\": \"closeButton\"},";
+                }
+            }
+
+
+            return string.Empty;
         }
     }
 }
