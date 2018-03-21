@@ -1,7 +1,9 @@
 ﻿namespace Captions.Viewmodels
 {
-    public class ViewModel
+    public abstract class ViewModel
     {
+
+        public string ID { get; set; }
 
     }
 }

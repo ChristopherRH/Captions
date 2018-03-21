@@ -13,10 +13,9 @@ namespace Captions.Viewmodels
             PostedBy = post.PostedBy;
             PostContent = post.PostContent;
             CreatedDate = Convert.ToDateTime(post.CreatedDate).ToString("dddd, MMMM dd, yyyy");
-            Captions = new CaptionListViewModel(post.Captions, true);
+            Captions = new CaptionListViewModel(post.Captions);
         }
         
-        public string ID { get; set; }
         public string PostTitle { get; set; }        
         public string PostContent { get; set; }        
         public string PostedBy { get; set; }

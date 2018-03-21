@@ -16,10 +16,10 @@ namespace Captions.Viewmodels
             Captions = new List<CaptionViewModel>();
         }
 
-        public CaptionListViewModel(ICollection<Caption> captions, bool includeBlobs = false)
+        public CaptionListViewModel(ICollection<Caption> captions)
         {
             Captions = new List<CaptionViewModel>();
-            captions.ForEach(x => Captions.Add(new CaptionViewModel(x, includeBlobs)));
+            captions.ForEach(x => Captions.Add(new CaptionViewModel(x)));
         }
 
         public ICollection<CaptionViewModel> Captions { get; set; }

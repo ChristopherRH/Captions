@@ -5,23 +5,15 @@ namespace Captions.Viewmodels
     public class CaptionViewModel : ViewModel
     {
 
-        public CaptionViewModel(Caption caption, bool includeBlobs = false)
+        public CaptionViewModel(Caption caption)
         {
             ID = caption.ID.ToString();
             Title = caption.Title;
-            ContentType = caption.ContentType;
-
-            if (includeBlobs)
-            {
-                Data = caption.Data;
-            }
-
+            ContentType = caption.ContentType;           
         }
 
-        public string ID { get; set; }
         public string Title { get; set; }
         public string ContentType { get; set; }
-        public byte[] Data { get; set; }
 
     }
 }
