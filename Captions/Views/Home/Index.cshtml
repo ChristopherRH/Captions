@@ -1,12 +1,35 @@
-﻿<h1>This is the home page</h1>
-@if (ViewData["error"] != null)
+﻿@if (ViewData["error"] != null)
 {
     @Html.Swal2(new Swal2 { Title = "Not Authorized", TitleText = "You are not authorized to perform that action." });
 }
 
+@model PostListViewModel
 
-@model CaptionListViewModel
-@Html.Nanogallery(Model.Captions, new Nanogallery
+@foreach (var post in Model.Posts)
 {
-    ThumbnailWidth = "50",
-})
+    <div>
+        <p class="small font-weight-bold">@post.CreatedDate</p>
+        <h2>@post.PostTitle</h2>
+        <hr />
+
+        <span>@post.PostContent</span>
+
+        <hr />
+        @if (post.Captions.Captions.Any())
+        {
+            @Html.Nanogallery(post.Captions.Captions,
+                new Nanogallery
+                {
+                    ThumbnailDisplayTransition = "randomScale"
+
+                },
+                post.ID)
+        }
+        else
+        {
+            <p class="text-center font-italic small">No Images Available</p>
+        }
+    </div>
+    <br /><br /><br /><br /><br /><hr />
+
+}

@@ -2,11 +2,18 @@
 using Captions.Models;
 using System.Web;
 using System.IO;
+using System.Collections.Generic;
+using System;
+using Captions.DataMap;
+using System.Linq;
+using Captions.Viewmodels;
 
 namespace Captions.Service
 {
     public class ImageService
     {
+        private static int max;
+
         /// <summary>
         /// For the specified Caption, get the image content and return it
         /// </summary>

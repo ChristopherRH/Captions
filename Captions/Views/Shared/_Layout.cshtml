@@ -11,76 +11,53 @@
     @Styles.Render("~/Content/nanogallery")
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    @Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" }))
+                </li>
+                <li class="nav-item">
+                    @Html.ActionLink("Captions", "Index", "Caption", null, new { @class = "nav-link"})
+                </li>
+                <li class="nav-item">
+                    @Html.ActionLink("Posts", "Index", "Post", null, new { @class = "nav-link" })
+                </li>
+                @if (SecurityService.HasAdminAccess())
+                {
+                    <li>
+                        @Html.ActionLink("Admin", "Index", "Admin", null, new { @class = "nav-link" })
+                    </li>
+                }
+            </ul>
+        </div>
+
+            @if (SecurityService.GetLoggedInUser() == null)
+            {
+                <a href="#" class="text-light" data-toggle="modal" data-target="#login-modal">Login</a>
+            }
+            else
+            {
+                @Html.ActionLink("Logout", "Logout", "User", null, new { @class = "text-light" })
+            }
+
+    </nav>
+    @Html.Bootstrap().Div().AddAttributes(new { @class = "modal fade", id = "login-modal", tabindex = "-1" }).AddChild(
+        Html.Bootstrap().Div().AddAttributes(new { @class = "modal-dialog" }).AddChild(
+                Html.Bootstrap().Div().AddAttributes(new { @class = "modal-content" }).AddChild(
+                    Html.Bootstrap().Div().AddAttributes(new { @class = "modal-body" }).AddContent(
+                        Html.Partial("~/Views/User/Login.cshtml")))))
+    
     <div class="container">
         <div class="row">
-            <div class="col-10">
+            <div class="col-12">
                 @RenderBody()
-            </div>
-
-            <div class="col-1 affix">
-                <!-- TODO: Cards-->
-                <!-- Home -->
-                <div class="card border-dark mb-3">
-                    <div class="card-body">
-                        @Html.ActionLink("Home", "Index", "Home")
-                    </div>
-                </div>
-
-                <!-- Captions -->
-                <div class="card border-dark mb-3">
-                    <div class="card-body">
-                        @Html.ActionLink("Captions", "Index", "Caption")
-                    </div>
-                </div>
-
-                <!-- Posts -->
-                <div class="card border-dark mb-3">
-                    <div class="card-body">
-                        @Html.ActionLink("Posts", "Index", "Post")
-                    </div>
-                </div>
-
-                <!-- Login -->
-                @if (SecurityService.GetLoggedInUser() == null)
-                {
-                    <div class="card border-dark mb-3">
-                        <div class="card-body">
-                            <a href="#" data-toggle="modal" data-target="#login-modal">Login</a>
-                            <div class="modal fade" id="login-modal" tabindex="-1" role="dialog">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-body">
-                                            @Html.Partial("~/Views/User/Login.cshtml")
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                }
-                else
-                {
-                <!-- Logged in -->
-                    <div class="card border-dark mb-3">
-                        <div class="card-body">
-                            @Html.ActionLink("Logout", "Logout", "User")
-                        </div>
-                    </div>
-                }
-                <!-- Admin -->
-                @if (SecurityService.HasAdminAccess())
-            {
-                    <div class="card border-dark mb-3">
-                        <div class="card-body">
-                            @Html.ActionLink("Admin", "Index", "Admin")
-                        </div>
-                    </div>
-                }
             </div>
         </div>
     </div>
-
     @Scripts.Render("~/bundles/select2")
     @Scripts.Render("~/bundles/swal")
     @Scripts.Render("~/bundles/bootstrap")

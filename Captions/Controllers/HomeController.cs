@@ -13,12 +13,12 @@ namespace Captions.Controllers
     {
         public ActionResult Index()
         {
-            var list = new List<CaptionViewModel>();
-            ApplyEntitySorting(db.Captions.ToList(), sortOrder: SortOrder.Descening).ForEach(c => list.Add(new CaptionViewModel(c)));
+            var list = new List<PostViewModel>();
+            ApplyEntitySorting(db.Posts.ToList(), sortOrder: SortOrder.Descening).ForEach(c => list.Add(new PostViewModel(c)));
 
-            var vm = new CaptionListViewModel
+            var vm = new PostListViewModel
             {
-                Captions = list
+                Posts = list
             };
             return View(vm);
         }
