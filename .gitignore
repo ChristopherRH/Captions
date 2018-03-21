@@ -259,3 +259,4 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+Captions/Properties/PublishProfiles/Captions20180320102423 - Web Deploy.pubxml
