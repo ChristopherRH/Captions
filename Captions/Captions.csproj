@@ -205,6 +205,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Dropzone\basic.css" />
     <Content Include="Content\Dropzone\dropzone.css" />
+    <Content Include="Scripts\font-awesome.js" />
     <Content Include="Content\login.css" />
     <Content Include="Content\Nanogallery2\nanogallery2.min.css" />
     <Content Include="Content\Nanogallery2\nanogallery2.woff.min.css" />
@@ -216,8 +217,8 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\font\ngy2_icon_font.woff" />
-    <Content Include="Content\font\ngy2_icon_font.woff2" />
+    <Content Include="Content\Nanogallery2\font\ngy2_icon_font.woff" />
+    <Content Include="Content\Nanogallery2\font\ngy2_icon_font.woff2" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />

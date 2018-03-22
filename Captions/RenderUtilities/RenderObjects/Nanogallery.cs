@@ -209,6 +209,40 @@ namespace Captions.RenderUtilities.RenderObjects
         [Description("viewerTools")]
         public string ViewerTools => "default";
 
+        /// <summary>
+        /// "icons":    {
+        ///                     "thumbnailAlbum": "<i style='color:#e00;' class='fa fa-search-plus'></i>"
+        ///                    }
+        ///                    
+        /// paginationNext:          
+        /// paginationPrevious:
+        /// galleryMoreButton:
+        /// buttonClose:        
+        /// viewerPrevious:     
+        /// viewerNext:         
+        /// viewerImgPrevious:  
+        /// viewerImgNext:      
+        /// viewerDownload:     
+        /// viewerToolbarMin:   
+        /// viewerToolbarStd:   
+        /// viewerPlay:         
+        /// viewerPause:        
+        /// viewerFullscreenOn: 
+        /// viewerFullscreenOff:
+        /// viewerZoomIn:       
+        /// viewerZoomOut:      
+        /// viewerLinkOriginal: 
+        /// viewerInfo:         
+        /// viewerShare:        
+        /// user:               
+        /// location:           
+        /// config:             
+        /// This will have special logic, but for now read only default
+        /// </summary>
+        [Render]
+        [Description("icons")]
+        public string Icons => "default";
+
         #endregion
 
     }

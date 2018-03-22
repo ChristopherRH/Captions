@@ -132,7 +132,8 @@ namespace Captions.RenderUtilities
             var SpecialNanogalleryProperties = new List<string>
             {
                 { "ViewerToolbar" },
-                { "ViewerTools" }
+                { "ViewerTools" },
+                { "Icons" }
             };
             return SpecialNanogalleryProperties.Contains(pi.Name);
         }
@@ -159,6 +160,28 @@ namespace Captions.RenderUtilities
                 if ((string)value == "default")
                 {
                     return "\"viewerTools\": { \"topRight\": \"closeButton\"},";
+                }
+            }
+
+            if (property == "Icons")
+            {
+                if ((string)value == "default")
+                {
+                    return "\"icons\": { " +
+                        "\"buttonClose\": \"<i class='fas fa-times'></i>\"," +
+                        "\"viewerFullscreenOff\": \"<i class='fas fa-arrows-alt'></i>\"," +
+                        "\"viewerFullscreenOn\": \"<i class='fas fa-arrows-alt'></i>\"," +   
+                        "\"viewerPlay\": \"<i class='fas fa-play'></i>\"," +
+                        "\"viewerPause\": \"<i class='fas fa-pause'></i>\"," +
+                        "\"viewerImgNext\": \"<i class='fas fa-chevron-right'></i>\"," +
+                        "\"viewerNext\": \"<i class='fas fa-chevron-right'></i>\"," +
+                        "\"viewerImgPrevious\": \"<i class='fas fa-chevron-left'></i>\"," +
+                        "\"viewerPrevious\": \"<i class='fas fa-chevron-left'></i>\"," + 
+                        "\"viewerDownload\": \"<i class='fas fa-download'></i>\"," +
+                        "\"viewerLinkOriginal\": \"<i class='fas fa-external-link-alt'></i>\"," +                      
+                        "\"viewerZoomIn\": \"<i class='fas fa-search-plus'></i>\"," + 
+                        "\"viewerZoomOut\": \"<i class='fas fa-search-minus'></i>\"" + 
+                        "},";
                 }
             }
 
