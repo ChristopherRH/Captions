@@ -6,10 +6,10 @@
     <div>
 
         <p class="small font-weight-bold">@post.CreatedDate</p>
-        <h2>@post.PostTitle</h2>
+        <h2 class="text-center">@post.PostTitle</h2>
         <hr />
 
-        <span>@post.PostContent</span>
+        <span class="content-as-html">@post.PostContent</span>
 
         <hr />
         @if (post.Captions.Captions.Any())
@@ -46,3 +46,4 @@ else
 }
 
 @Scripts.Render("~/bundles/nanogallery")
+@Scripts.Render("~/bundles/caption")

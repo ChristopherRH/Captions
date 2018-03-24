@@ -437,7 +437,7 @@
         this.options.url = this.element.getAttribute("action");
       }
       if (!this.options.url) {
-        throw new Error("No URL provided.");
+          return;
       }
       if (this.options.acceptedFiles && this.options.acceptedMimeTypes) {
         throw new Error("You can't provide both 'acceptedFiles' and 'acceptedMimeTypes'. 'acceptedMimeTypes' is deprecated.");

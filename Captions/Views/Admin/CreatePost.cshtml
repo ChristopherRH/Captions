@@ -7,7 +7,7 @@
         @Html.Bootstrap().Input(name: "title", inputType: FormInputType.Text)
 
         @Html.Label("Content")
-        @Html.Bootstrap().TextArea(name: "content")
+        @Html.Bootstrap().TextArea(name: "content").AddAttributes(new { id = "trumbowyg" })
 
         @Html.Label("Add Captions")
         <br />

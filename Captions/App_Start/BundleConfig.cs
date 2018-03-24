@@ -31,7 +31,8 @@ namespace Captions
                       "~/Content/Select2/Select2.css",
                       "~/Content/Nanogallery2/nanogallery2.min.css",
                       "~/Content/Dropzone/basic.css",
-                      "~/Content/Dropzone/dropzone.css"
+                      "~/Content/Dropzone/dropzone.css",
+                      "~/Content/Trumbowyg/trumbowyg.css"
                       ));
             // Login
             bundles.Add(new StyleBundle("~/Content/login").Include(
@@ -58,6 +59,10 @@ namespace Captions
             // Intercooler
             bundles.Add(new ScriptBundle("~/bundles/intercooler").Include(
                      "~/Scripts/Intercooler/Intercooler.js"));
+
+            // Trumbowyg
+            bundles.Add(new ScriptBundle("~/bundles/trumbowyg").Include(
+                     "~/Scripts/Trumbowyg/trumbowyg.js"));
 
             // Caption (personal scripts)
             bundles.Add(new ScriptBundle("~/bundles/caption").Include(

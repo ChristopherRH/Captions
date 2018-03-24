@@ -1,5 +1,6 @@
 ﻿using Captions.Models;
 using System;
+using System.Web;
 
 namespace Captions.Viewmodels
 {
@@ -11,7 +12,7 @@ namespace Captions.Viewmodels
             ID = post.ID.ToString();
             PostTitle = post.PostTitle;
             PostedBy = post.PostedBy;
-            PostContent = post.PostContent;
+            PostContent = HttpUtility.UrlDecode(post.PostContent);
             CreatedDate = Convert.ToDateTime(post.CreatedDate).AddDays(-1).ToString("dddd, MMMM dd, yyyy"); // off by 1 day, figure out why later
             Captions = new CaptionListViewModel(post.Captions);
         }
