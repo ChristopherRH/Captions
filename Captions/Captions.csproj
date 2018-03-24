@@ -180,9 +180,12 @@
     <Compile Include="Models\Caption.cs" />
     <Compile Include="Models\ApplcationValue.cs" />
     <Compile Include="Models\Post.cs" />
+    <Compile Include="Models\SearchQuery.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RenderUtilities\IntercoolerRender.cs" />
     <Compile Include="RenderUtilities\NanogalleryRender.cs" />
+    <Compile Include="RenderUtilities\RenderObjects\Intercooler.cs" />
     <Compile Include="RenderUtilities\RenderObjects\Nanogallery.cs" />
     <Compile Include="RenderUtilities\RenderObjects\Select2.cs" />
     <Compile Include="RenderUtilities\RenderObjects\Swal2.cs" />
@@ -198,6 +201,7 @@
     <Compile Include="Viewmodels\PostListViewModel.cs" />
     <Compile Include="Viewmodels\CaptionListViewModel.cs" />
     <Compile Include="Viewmodels\CaptionViewModel.cs" />
+    <Compile Include="Viewmodels\ListViewModel.cs" />
     <Compile Include="Viewmodels\ViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -227,6 +231,7 @@
     <Content Include="Scripts\Dropzone\dropzone.js" />
     <None Include="Scripts\jquery-2.1.3.intellisense.js" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\Intercooler\Intercooler.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
@@ -270,6 +275,9 @@
     <Content Include="Views\Admin\UploadCaption.cshtml" />
     <Content Include="Views\Admin\DeleteCaption.cshtml" />
     <Content Include="Views\Admin\DeletePost.cshtml" />
+    <Content Include="Views\Home\List.cshtml" />
+    <Content Include="Views\Post\List.cshtml" />
+    <Content Include="Views\Caption\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

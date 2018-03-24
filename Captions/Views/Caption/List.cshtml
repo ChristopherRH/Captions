@@ -1,0 +1,26 @@
+﻿@model CaptionListViewModel
+
+@Html.Nanogallery(Model.Captions, new Nanogallery
+{
+    GalleryMaxItems = 16,
+    ThumbnailHeight = Request.Browser.ScreenPixelsHeight.ToString(),
+    ThumbnailWidth = "auto"
+})
+
+
+
+@if (!Model.EndOfSearch)
+{
+    @Html.Intercooler(new Intercooler
+   {
+       appendfrom = "Caption/List?page=" + Model.CurrentPageNumber++,
+       triggeron = "scrolled-into-view",
+       target = "#main-content",
+       oncomplete = "removePreviousIntercooler();"
+   })
+}
+else
+{
+    <p class="text-center font-italic small">End of Search</p>
+}
+@Scripts.Render("~/bundles/nanogallery")

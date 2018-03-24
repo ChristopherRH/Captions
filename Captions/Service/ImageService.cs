@@ -12,8 +12,6 @@ namespace Captions.Service
 {
     public class ImageService
     {
-        private static int max;
-
         /// <summary>
         /// For the specified Caption, get the image content and return it
         /// </summary>

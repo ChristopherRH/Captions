@@ -55,6 +55,10 @@ namespace Captions
             bundles.Add(new ScriptBundle("~/bundles/select2").Include(
                      "~/Scripts/Select2/Select2.js"));
 
+            // Intercooler
+            bundles.Add(new ScriptBundle("~/bundles/intercooler").Include(
+                     "~/Scripts/Intercooler/Intercooler.js"));
+
             // Caption (personal scripts)
             bundles.Add(new ScriptBundle("~/bundles/caption").Include(
                      "~/Scripts/Caption.js"));

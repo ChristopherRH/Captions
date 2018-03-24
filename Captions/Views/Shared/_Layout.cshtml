@@ -15,7 +15,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-                <li class="nav-item active">
+                <li class="nav-item">
                     @Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })
                 </li>
                 <li class="nav-item">
@@ -61,6 +61,7 @@
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/caption")
     @Scripts.Render("~/bundles/nanogallery")
+    @Scripts.Render("~/bundles/intercooler")
     @RenderSection("scripts", required: false)
 
 </body>

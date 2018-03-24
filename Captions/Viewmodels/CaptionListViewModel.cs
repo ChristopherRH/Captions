@@ -5,7 +5,7 @@ using WebGrease.Css.Extensions;
 
 namespace Captions.Viewmodels
 {
-    public class CaptionListViewModel
+    public class CaptionListViewModel : ListViewModel
     {
 
         /// <summary>

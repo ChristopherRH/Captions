@@ -12,3 +12,8 @@
         }
     });
 }
+
+function removePreviousIntercooler()
+{
+    $(".intercooler-loader").remove();
+}

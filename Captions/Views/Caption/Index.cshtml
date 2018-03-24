@@ -1,10 +1,4 @@
 ﻿@model CaptionListViewModel
-
-@if (Model.Captions.Any())
-{
-    @Html.Nanogallery(Model.Captions)
-}
-else
-{
-    <h1>No Captions Uploaded</h1>
-}
+<div id="main-content">
+    @Html.Partial("List", Model)
+</div>

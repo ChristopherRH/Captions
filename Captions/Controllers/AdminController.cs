@@ -97,7 +97,7 @@ namespace Captions.Controllers
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 success = false;
             }

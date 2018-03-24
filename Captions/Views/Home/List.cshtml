@@ -1,0 +1,48 @@
+﻿@model PostListViewModel
+
+
+@foreach (var post in Model.Posts)
+{
+    <div>
+
+        <p class="small font-weight-bold">@post.CreatedDate</p>
+        <h2>@post.PostTitle</h2>
+        <hr />
+
+        <span>@post.PostContent</span>
+
+        <hr />
+        @if (post.Captions.Captions.Any())
+        {
+            @Html.Nanogallery(post.Captions.Captions,
+                new Nanogallery
+                {
+                    ThumbnailDisplayTransition = "randomScale"
+
+                },
+                post.ID)
+        }
+        else
+        {
+            <p class="text-center font-italic small">No Images Available</p>
+        }
+    </div>
+        <br /><br /><br /><br /><br /><hr />
+
+}
+@if (!Model.EndOfSearch)
+{    
+    @Html.Intercooler(new Intercooler
+    {
+        appendfrom = "Home/List?page=" + Model.CurrentPageNumber++,
+        triggeron =  "scrolled-into-view",
+        target = "#main-content",
+        oncomplete = "removePreviousIntercooler();"
+    })
+}
+else
+{
+    <p class="text-center font-italic small">End of Search</p>
+}
+
+@Scripts.Render("~/bundles/nanogallery")

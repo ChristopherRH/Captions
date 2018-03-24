@@ -12,7 +12,7 @@ namespace Captions.Viewmodels
             PostTitle = post.PostTitle;
             PostedBy = post.PostedBy;
             PostContent = post.PostContent;
-            CreatedDate = Convert.ToDateTime(post.CreatedDate).ToString("dddd, MMMM dd, yyyy");
+            CreatedDate = Convert.ToDateTime(post.CreatedDate).AddDays(-1).ToString("dddd, MMMM dd, yyyy"); // off by 1 day, figure out why later
             Captions = new CaptionListViewModel(post.Captions);
         }
         
