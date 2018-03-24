@@ -1,7 +1,9 @@
 ﻿function ajaxSubmit(action, form, type, bodyReplace) {
+    var content = encodeURI($(form).find('textarea[name="content"]').val())
+    encodeURI($(form).find('textarea[name="content"]').val(content))
     $.ajax({
         url: action,
-        data: encodeURI($(form).serialize()),
+        data: $(form).serialize(),
         method: type
     }).done(function (result) {
         if (!result.Success) {
